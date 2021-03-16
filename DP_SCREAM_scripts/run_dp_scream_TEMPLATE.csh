@@ -47,6 +47,9 @@
   # Set number of processors to use
   set num_procs = CASEnumprocs
   
+  # set walltime
+  set walltime = 'CASEwalltime'
+
   ## SET DOMAIN SIZE AND RESOLUTION
   # Note that these scripts are set to run with dx=dy=3.33 km
   # which is the default SCREAM resolution.
@@ -124,8 +127,6 @@
   set case_scripts_dir = $run_root_dir/case_scripts
   set case_build_dir   = $run_root_dir/build
   set case_run_dir     = $run_root_dir/run
-
-  set walltime = '00:10:00'
 
 # Create new case
   ./create_newcase -case $casename --script-root $temp_case_scripts_dir -mach $machine -project $PROJECT -compset $compset -res $grid

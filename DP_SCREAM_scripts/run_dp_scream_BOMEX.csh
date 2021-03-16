@@ -3,8 +3,8 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  DYCOMSrf01
-#######  Non-precipitating marine stratocumulus
+#######  BOMEX
+#######  Non-precipitating trade-wind cumulus convection
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
 
@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_DYCOMSrf01
+  setenv casename scream_dp_BOMEX
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -71,19 +71,19 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 31.5 # latitude
-  set lon = 239.0 # longitude
+  set lat = 15.0 # latitude
+  set lon = 300.0 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
   set do_iop_nudge_uv = .false. # Relax U&V to observations?
   set do_iop_subsidence = .true. # compute LS vertical transport?
   set do_turnoff_swrad = .true. # Turn off SW calculation
-  set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 1999-07-10 # Start date in IOP file
+  set do_turnoff_lwrad = .true. # Turn off LW calculation
+  set startdate = 1969-06-25 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
-  set stop_option = nhours
-  set stop_n = 12
-  set iop_file = DYCOMSrf01_iopfile_4scam.nc #IOP file name
+  set stop_option = ndays
+  set stop_n = 1
+  set iop_file = BOMEX_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)

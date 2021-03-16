@@ -32,11 +32,14 @@
   
   # Set to debug queue? 
   # (some cases are short enough to run on debug queues)
-  set debug_queue true
+  set debug_queue false
   
   # Set number of processors to use
   set num_procs = 64
   
+  # set walltime
+  set walltime = '00:30:00'
+
   ## SET DOMAIN SIZE AND RESOLUTION
   # Note that these scripts are set to run with dx=dy=3.33 km
   # which is the default SCREAM resolution.
@@ -73,7 +76,7 @@
   set do_iop_srf_prop = .false. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
   set do_iop_nudge_uv = .true. # Relax U&V to observations?
-  set do_iop_subsidence = .true. # compute LS vertical transport?
+  set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
   set startdate = 1974-08-30 # Start date in IOP file
@@ -114,8 +117,6 @@
   set case_scripts_dir = $run_root_dir/case_scripts
   set case_build_dir   = $run_root_dir/build
   set case_run_dir     = $run_root_dir/run
-
-  set walltime = '00:10:00'
 
 # Create new case
   ./create_newcase -case $casename --script-root $temp_case_scripts_dir -mach $machine -project $PROJECT -compset $compset -res $grid
