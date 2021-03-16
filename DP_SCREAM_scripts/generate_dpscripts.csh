@@ -79,7 +79,7 @@ sed -i s/CASEwalltime/00:30:00/ $outfile
 ################################
 
 set casename = ARM97
-set outfile = run_e3sm_scm_$casename.csh 
+set outfile = run_dp_scream_$casename.csh 
 cp -r run_dp_scream_TEMPLATE.csh $outfile
 sed -i s/THECASENAME/$casename/ $outfile
 sed -i s/THECASEDESCRIPTION/"Deep convection over ARM SGP site"/ $outfile
