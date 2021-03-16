@@ -50,7 +50,7 @@ sed -i s/CASEdosub/.true./ $outfile
 
 set casename = GATEIII
 set outfile = run_dp_scream_$casename.csh 
-cp -r run_e3sm_scm_TEMPLATE.csh $outfile
+cp -r run_dp_scream_TEMPLATE.csh $outfile
 sed -i s/THECASENAME/$casename/ $outfile
 sed -i s/THECASEDESCRIPTION/"Maritime deep convection"/ $outfile
 sed -i s/CASElat/9.00/ $outfile
@@ -103,19 +103,19 @@ if ($setupfor == user) then
     if ($file != run_dp_scream_TEMPLATE.csh && $file != generate_dpscripts.csh) then
 
       # Path to output
-      sed -i s+'/p/lustre2/bogensch/ACME_simulations'+/p/lustre2/bogensch/ACME_simulations+ $file
+      sed -i s+'$CSCRATCH/SCM_runs'+/p/lustre2/bogensch/ACME_simulations+ $file
       
       # Path to code base
-      sed -i s+'/g/g19/bogensch/code'+/g/g19/bogensch/code+ $file
+      sed -i s+'$HOME/SCREAM_code'+/g/g19/bogensch/code+ $file
 
       # Name of code base
-      sed -i s+SCREAM_DP+SCREAM_DP+ $file
+      sed -i s+'SCREAM_codetag'+SCREAM_DP+ $file
 
       # Name of machine used
-      sed -i s+quartz+quartz+ $file
+      sed -i s+'mach_name'+quartz+ $file
 
       # Name of project to be charged
-      sed -i s+cbronze+cbronze+ $file
+      sed -i s+'proj_name'+cbronze+ $file
     endif
   end
 
