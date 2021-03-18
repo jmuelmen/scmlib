@@ -44,6 +44,38 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/12/ $outfile
+
+################################
+# DYCOMSRF02
+################################
+
+set casename = DYCOMSrf02
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Drizzling marine stratocumulus"/ $outfile
+sed -i s/AEROTYPE/observed/ $outfile
+sed -i s/CASElat/31.5/ $outfile
+sed -i s/CASElon/239.0/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.true./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/1999-07-11/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEstopn/12/ $outfile
+sed -i s/CASEdebug/true/ $outfile
+sed -i s/CASEnumprocs/16/ $outfile
+sed -i s/CASEnex/5/ $outfile
+sed -i s/CASEney/5/ $outfile
+sed -i s/CASElex/50000/ $outfile
+sed -i s/CASEley/50000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.true./ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/12/ $outfile
 
 ################################
 # GATE
@@ -73,6 +105,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.true./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/60/ $outfile
 
 ################################
 # ARM97 
@@ -102,6 +135,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.true./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/60/ $outfile
 
 ################################
 # BOMEX
@@ -131,6 +165,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/12/ $outfile
 
 foreach file (*.csh)
   if ($file != run_dp_scream_TEMPLATE.csh && $file != generate_dpscripts.csh) then

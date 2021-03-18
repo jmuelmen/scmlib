@@ -129,11 +129,11 @@
   ./xmlchange --id RUNDIR --val "${case_run_dir}"
 
 # Set to debug, only on certain machines
-  if ($machine =~ 'cori*') then
+  if ($machine =~ 'cori*' && $debug_queue == 'true') then
     ./xmlchange --id JOB_QUEUE --val 'debug'
   endif
 
-  if ($machine == 'quartz' || $machine == 'syrah') then
+  if (($machine == 'quartz' || $machine == 'syrah') && $debug_queue == 'true') then
     ./xmlchange --id JOB_QUEUE --val 'pdebug'
   endif
 
@@ -167,7 +167,7 @@ cat <<EOF >> user_nl_eam
  iop_nudge_tq = $do_iop_nudge_tq
  iop_nudge_uv = $do_iop_nudge_uv
  mfilt = 5000 
- nhtfrq = 12 
+ nhtfrq = 60 
  scmlat = $lat
  scmlon = $lon
  iradsw = 5

@@ -3,8 +3,8 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  GATEIII
-#######  Maritime deep convection
+#######  DYCOMSrf02
+#######  Drizzling marine stratocumulus
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
 
@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_GATEIII
+  setenv casename scream_dp_DYCOMSrf02
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -32,10 +32,10 @@
   
   # Set to debug queue? 
   # (some cases are short enough to run on debug queues)
-  set debug_queue false
+  set debug_queue true
   
   # Set number of processors to use
-  set num_procs = 64
+  set num_procs = 16
   
   # set walltime
   set walltime = '00:30:00'
@@ -51,12 +51,12 @@
   # dx = domain_size_x / (num_ne_x * 3)
   
   # Set number of points in x&y direction per element
-  set num_ne_x = 10
-  set num_ne_y = 10
+  set num_ne_x = 5
+  set num_ne_y = 5
   
   # Set domain length (in m) in x&y direction
-  set domain_size_x = 100000
-  set domain_size_y = 100000
+  set domain_size_x = 50000
+  set domain_size_y = 50000
 
 # User enter any needed modules to load or use below
 #  EXAMPLE:
@@ -71,19 +71,19 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 9.00 # latitude
-  set lon = 336.0 # longitude
-  set do_iop_srf_prop = .false. # Use surface fluxes in IOP file?
+  set lat = 31.5 # latitude
+  set lon = 239.0 # longitude
+  set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
-  set do_iop_nudge_uv = .true. # Relax U&V to observations?
-  set do_iop_subsidence = .false. # compute LS vertical transport?
-  set do_turnoff_swrad = .false. # Turn off SW calculation
+  set do_iop_nudge_uv = .false. # Relax U&V to observations?
+  set do_iop_subsidence = .true. # compute LS vertical transport?
+  set do_turnoff_swrad = .true. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 1974-08-30 # Start date in IOP file
+  set startdate = 1999-07-11 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
-  set stop_option = ndays
-  set stop_n = 20
-  set iop_file = GATEIII_iopfile_4scam.nc #IOP file name
+  set stop_option = nhours
+  set stop_n = 12
+  set iop_file = DYCOMSrf02_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)
@@ -167,7 +167,7 @@ cat <<EOF >> user_nl_eam
  iop_nudge_tq = $do_iop_nudge_tq
  iop_nudge_uv = $do_iop_nudge_uv
  mfilt = 5000 
- nhtfrq = 60 
+ nhtfrq = 12 
  scmlat = $lat
  scmlon = $lon
  iradsw = 5
