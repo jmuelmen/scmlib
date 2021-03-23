@@ -129,12 +129,14 @@
   ./xmlchange --id RUNDIR --val "${case_run_dir}"
 
 # Set to debug, only on certain machines
-  if ($machine =~ 'cori*' && $debug_queue == 'true') then
-    ./xmlchange --id JOB_QUEUE --val 'debug'
-  endif
+  if ($debug_queue == 'true') then
+    if ($machine =~ 'cori*') then
+      ./xmlchange --id JOB_QUEUE --val 'debug'
+    endif
 
-  if (($machine == 'quartz' || $machine == 'syrah') && $debug_queue == 'true') then
-    ./xmlchange --id JOB_QUEUE --val 'pdebug'
+    if ($machine == 'quartz' || $machine == 'syrah') then
+      ./xmlchange --id JOB_QUEUE --val 'pdebug'
+    endif
   endif
 
 # Get local input data directory path
@@ -240,6 +242,10 @@ EOF
 #   appears to be currently broken for SCM
 cat <<EOF >> user_nl_cice
   histfreq='y','x','x','x','x'
+EOF
+
+cat <<EOF>> user_nl_elm
+  hist_empty_htapes = .true.
 EOF
 
 set ELM_CONFIG_OPTS="-phys elm"
