@@ -32,7 +32,7 @@
   
   # Set to debug queue? 
   # (some cases are short enough to run on debug queues)
-  set debug_queue true
+  setenv debug_queue true
   
   # Set number of processors to use
   set num_procs = 16
@@ -50,7 +50,7 @@
   # To estimate dx (analogous for dy):
   # dx = domain_size_x / (num_ne_x * 3)
   
-  # Set number of points in x&y direction per element
+  # Set number of elements in the x&y directions
   set num_ne_x = 5
   set num_ne_y = 5
   
@@ -63,9 +63,16 @@
 #  module load python/2.7.5
 
 ####### END (mandatory) USER DEFINED SETTINGS
-####### Likely POSSIBLE EXCEPTION (not limited to):
+####### Likely POSSIBLE EXCEPTIONS (not limited to):
 #######  - If the user wants to add addition output, for example, the EAM
-#######	   namelist (user_nl_eam) should be modified below to accomodate for this
+#######	   namelist (user_nl_eam) should be modified below to accomodate for this.
+#######  - User has changed the resolution which may require adjustment
+#######    of the model timesteps.
+#######
+#######  - NOTE ON DEFAULT OUTPUT
+#######    - *eam.h0* tapes contain the the default output averaged daily
+#######    - *eam.h1* tapes contain instanenous 2D fields output hourly
+#######    - ALL of this can be modified by the user
 ###########################################################################
 ###########################################################################
 ###########################################################################
@@ -149,7 +156,7 @@
   end
 
 # CAM configure options.  By default set up with settings the same as E3SMv1
-  set CAM_CONFIG_OPTS="-phys cam5 -scam -dpcrm_mode -nlev 72 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
+  set CAM_CONFIG_OPTS="-phys cam5 -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
 
@@ -168,8 +175,10 @@ cat <<EOF >> user_nl_eam
  iop_dosubsidence = $do_iop_subsidence
  iop_nudge_tq = $do_iop_nudge_tq
  iop_nudge_uv = $do_iop_nudge_uv
- mfilt = 5000 
- nhtfrq = 12 
+ fincl2='CLDLOW','CLDMED','CLDHGH','CLDTOT','CDNUMC','DTENDTH','DTENDTQ','FLDS','FLNS','FLNSC','FLNT','FLNTC','FLUT','FLUTC','FSDS','FSDSC','FSNS','FSNSC','FSNT','FSNTC','FSNTOA','FSNTOAC','FSUTOA','FSUTOAC','LHFLX','SHFLX','LWCF','SWCF','OMEGA500','PRECL','PS','QREFHT','SOLIN','TAUX','TAUY','TGCLDCWP','TGCLDIWP','TGCLDLWP','TH7001000','TMQ','TREFHT','TS','WINDSPD_10M','crm_grid_x','crm_grid_y'
+ mfilt = 5000, 5000
+ nhtfrq = -12, -1
+ avgflag_pertape='A','I'
  scmlat = $lat
  scmlon = $lon
  iradsw = 5

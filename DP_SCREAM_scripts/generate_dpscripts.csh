@@ -44,7 +44,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/12/ $outfile
+sed -i s/CASEnhtfrq/-12/ $outfile
 
 ################################
 # DYCOMSRF02
@@ -75,7 +75,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/12/ $outfile
+sed -i s/CASEnhtfrq/-12/ $outfile
 
 ################################
 # GATE
@@ -96,16 +96,16 @@ sed -i s/CASEstartinsec/0/ $outfile
 sed -i s/CASEstopoption/ndays/ $outfile
 sed -i s/CASEstopn/20/ $outfile
 sed -i s/CASEdebug/false/ $outfile
-sed -i s/CASEnumprocs/64/ $outfile
-sed -i s/CASEnex/10/ $outfile
-sed -i s/CASEney/10/ $outfile
-sed -i s/CASElex/100000/ $outfile
-sed -i s/CASEley/100000/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
 sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.true./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
-sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/60/ $outfile
+sed -i s/CASEwalltime/06:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
 # ARM97 
@@ -126,16 +126,16 @@ sed -i s/CASEstartinsec/84585/ $outfile
 sed -i s/CASEstopoption/ndays/ $outfile
 sed -i s/CASEstopn/26/ $outfile
 sed -i s/CASEdebug/false/ $outfile
-sed -i s/CASEnumprocs/64/ $outfile
-sed -i s/CASEnex/10/ $outfile
-sed -i s/CASEney/10/ $outfile
-sed -i s/CASElex/100000/ $outfile
-sed -i s/CASEley/100000/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
 sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.true./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
-sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/60/ $outfile
+sed -i s/CASEwalltime/08:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
 # BOMEX
@@ -165,7 +165,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/12/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
 
 foreach file (*.csh)
   if ($file != run_dp_scream_TEMPLATE.csh && $file != generate_dpscripts.csh) then
