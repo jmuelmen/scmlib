@@ -35,10 +35,10 @@
   setenv debug_queue false
   
   # Set number of processors to use
-  set num_procs = 128
+  set num_procs = 256
   
   # set walltime
-  set walltime = '08:00:00'
+  set walltime = '05:00:00'
 
   ## SET DOMAIN SIZE AND RESOLUTION
   # Note that these scripts are set to run with dx=dy=3.33 km
@@ -48,6 +48,7 @@
   # config options in this script)
   
   # To estimate dx (analogous for dy):
+  # Note there are 3x3 columns per element:
   # dx = domain_size_x / (num_ne_x * 3)
   
   # Set number of elements in the x&y directions

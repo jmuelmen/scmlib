@@ -58,6 +58,7 @@
   # config options in this script)
   
   # To estimate dx (analogous for dy):
+  # Note there are 3x3 columns per element:
   # dx = domain_size_x / (num_ne_x * 3)
   
   # Set number of elements in the x&y directions
