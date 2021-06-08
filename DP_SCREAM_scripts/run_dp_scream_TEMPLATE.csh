@@ -50,10 +50,10 @@
   # set walltime
   set walltime = 'CASEwalltime'
 
-  ## SET DOMAIN SIZE AND RESOLUTION
-  # Note that these scripts are set to run with dx=dy=3.33 km
+  ## SET DOMAIN SIZE AND RESOLUTION:
+  # - Note that these scripts are set to run with dx=dy=3.33 km
   # which is the default SCREAM resolution.
-  # If you wish to change the resolution, please note that it is up
+  # - If you wish to change the resolution, please note that it is up
   # to YOU to adjust the time steps appropriately (see namelist and
   # config options in this script)
   
@@ -75,15 +75,15 @@
 
 ####### END (mandatory) USER DEFINED SETTINGS
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
-#######  - If the user wants to add addition output, for example, the EAM
+#######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
 #######  - User has changed the resolution which may require adjustment
 #######    of the model timesteps.
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
-#######    - *eam.h1* tapes contain instanenous 2D fields output hourly
-#######    - ALL of this can be modified by the user
+#######    - *eam.h1* tapes contain instantaneous 2D fields output hourly
+#######    - ALL/any of this can be modified by the user
 ###########################################################################
 ###########################################################################
 ###########################################################################
@@ -119,7 +119,7 @@
 
   cd $E3SMROOT/cime/scripts
 
-  set compset=F2000-SCREAM-LR
+  set compset=F2000-SCREAM-HR
 
   # Note that in DP-SCREAM the grid is set ONLY to initialize
   #  the model from these files
@@ -167,7 +167,7 @@
   end
 
 # CAM configure options.  By default set up with settings the same as E3SMv1
-  set CAM_CONFIG_OPTS="-phys cam5 -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
+  set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
 
@@ -234,6 +234,7 @@ cat <<EOF >> user_nl_eam
  dt_tracer_factor = 1
  cld_macmic_num_steps = 1
  hypervis_scaling =  3.0
+ shoc_timestep = -1
 EOF
 
 # Settings related to domain size and resolution

@@ -157,7 +157,7 @@
   end
 
 # CAM configure options.  By default set up with settings the same as E3SMv1
-  set CAM_CONFIG_OPTS="-phys cam5 -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
+  set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
 
@@ -224,6 +224,7 @@ cat <<EOF >> user_nl_eam
  dt_tracer_factor = 1
  cld_macmic_num_steps = 1
  hypervis_scaling =  3.0
+ shoc_timestep = -1
 EOF
 
 # Settings related to domain size and resolution
