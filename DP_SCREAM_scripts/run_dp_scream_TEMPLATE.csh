@@ -41,7 +41,9 @@
   set lon = CASELONGlon
   
   # Set to debug queue? 
-  # (some cases are short enough to run on debug queues)
+  # - Some cases are small enough to run on debug queues
+  # - Setting to true only supported for NERSC and Livermore Computing,
+  #   else user will need to modify script to submit to debug queue
   setenv debug_queue CASEdebug
   
   # Set number of processors to use
@@ -102,6 +104,7 @@
   set stop_option = CASEstopoption
   set stop_n = CASEstopn
   set iop_file = THECASENAME_iopfile_4scam.nc #IOP file name
+  set sst_val = CASEsstval # set constant SST value (ONLY valid for RCE case)
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)
@@ -170,6 +173,7 @@
   set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
+  ./xmlchange --id CAM_CONFIG_OPTS --append --val=CASEconfigappend
 
   # Always run with the theta-l version of HOMME
   ./xmlchange CAM_TARGET=theta-l
@@ -198,6 +202,7 @@ cat <<EOF >> user_nl_eam
  iopfile = '$input_data_dir/$iop_path/$iop_file'
  pertlim = 0.001
  iop_perturb_high = 900.0D0
+ ncdata='$CASEncdata/atm/cam/inic/homme/cami_mam3_Linoz_ne30np4_SCREAM_L128_c160214.nc'
 EOF
 
 #./case.setup
@@ -282,6 +287,8 @@ set ELM_CONFIG_OPTS="-phys elm"
   ./xmlchange PTS_MULTCOLS_MODE="TRUE",PTS_MODE="TRUE",PTS_LAT="$lat",PTS_LON="$lon"
   ./xmlchange MASK_GRID="USGS",PTS_NX="${comp_mods_nx}",PTS_NY=1
   ./xmlchange CALENDAR="GREGORIAN"
+  
+  ./xmlchange DOCN_AQPCONST_VALUE=$CASEsstaqua
   
 # Set model timesteps
 # NOTE that if you change the resolution it is up to YOU

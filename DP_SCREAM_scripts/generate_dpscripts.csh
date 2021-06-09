@@ -10,6 +10,25 @@
 #    - if select user go to bottom of script and fill in deserired data paths etc. so that
 #      that the user need not edit all scripts if they planning on running several.
 
+# Notes about resolution dependencies
+
+# For BL cases 
+# 500 m: Nex=ney=33 (on 128 processors, gets through ~9 hrs in 30 minutes, run with 60 s timestep)
+# 1.5 km: Nex=ney=11
+# 3.3 km: Nex=ney=5
+# 5 km: Nex=ney=3
+
+# For DC cases
+# 500 m: Nex=ney=133
+# 1.5 km: Nex=ney=44
+# 3.3 km: Nex=ney=20
+# 5 km: Nex=ney=13
+
+# Time step things to modify:
+# se_nsplit, ATM_NCPL, CAM_NAMELIST_OPTS, ELM_NAMELIST_OPTS
+
+# For runs, probably want to have more frequent averaged output for BL cases
+
 setenv setupfor LC
 
 # helpful notes
@@ -232,6 +251,45 @@ sed -i s/CASEwalltime/00:30:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
 
+################################
+# RCE
+################################
+
+set casename = RCE
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Radiative Convective Equilibrium"/ $outfile
+sed -i s/CASElat/0.0/ $outfile
+sed -i s/CASElon/0.0/ $outfile
+sed -i s/CASEsrfprop/.false./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/0000-01-01/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/20/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/04:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/F2000-SCREAM-HR/F-EAM-RCEMIP/ $outfile
+sed -i s/CASEconfigappend/"'-rce -aquaplanet'"/ $outfile
+sed -i s/CASEncdata/"input_data_dir"/ $outfile
+sed -i s/CASEsstaqua/"sst_val"/ $outfile
+sed -i s/CASEsstval/300/ $outfile
+sed -i '/ELM_CONFIG_OPTS/d' $outfile
+sed -i '/ELM_NAMELIST_OPTS/d' $outfile
+sed -i '/CICE_CONFIG_OPTS/d' $outfile
+sed -i '/CALENDAR/d' $outfile
+
 foreach file (*.csh)
   if ($file != run_dp_scream_TEMPLATE.csh && $file != generate_dpscripts.csh) then
     sed -i '/OBSERVEDAERO/d' $file
@@ -251,6 +309,10 @@ foreach file (*.csh)
     sed -i '/FORCINGPROVIDER/d' $file 
     sed -i '/THECASELONGNAME/d' $file
     sed -i '/CASEcaltype/d' $file  
+    sed -i '/CASEconfigappend/d' $file
+    sed -i '/CASEsstaqua/d' $file
+    sed -i '/CASEsstval/d' $file
+    sed -i '/CASEncdata/d' $file
   endif
 end
 

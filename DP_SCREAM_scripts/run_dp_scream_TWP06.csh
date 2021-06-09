@@ -31,7 +31,9 @@
 
   
   # Set to debug queue? 
-  # (some cases are short enough to run on debug queues)
+  # - Some cases are small enough to run on debug queues
+  # - Setting to true only supported for NERSC and Livermore Computing,
+  #   else user will need to modify script to submit to debug queue
   setenv debug_queue false
   
   # Set number of processors to use
@@ -40,10 +42,10 @@
   # set walltime
   set walltime = '05:00:00'
 
-  ## SET DOMAIN SIZE AND RESOLUTION
-  # Note that these scripts are set to run with dx=dy=3.33 km
+  ## SET DOMAIN SIZE AND RESOLUTION:
+  # - Note that these scripts are set to run with dx=dy=3.33 km
   # which is the default SCREAM resolution.
-  # If you wish to change the resolution, please note that it is up
+  # - If you wish to change the resolution, please note that it is up
   # to YOU to adjust the time steps appropriately (see namelist and
   # config options in this script)
   
@@ -65,15 +67,15 @@
 
 ####### END (mandatory) USER DEFINED SETTINGS
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
-#######  - If the user wants to add addition output, for example, the EAM
+#######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
 #######  - User has changed the resolution which may require adjustment
 #######    of the model timesteps.
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
-#######    - *eam.h1* tapes contain instanenous 2D fields output hourly
-#######    - ALL of this can be modified by the user
+#######    - *eam.h1* tapes contain instantaneous 2D fields output hourly
+#######    - ALL/any of this can be modified by the user
 ###########################################################################
 ###########################################################################
 ###########################################################################
@@ -109,7 +111,7 @@
 
   cd $E3SMROOT/cime/scripts
 
-  set compset=F2000-SCREAM-LR
+  set compset=F2000-SCREAM-HR
 
   # Note that in DP-SCREAM the grid is set ONLY to initialize
   #  the model from these files
@@ -272,6 +274,7 @@ set ELM_CONFIG_OPTS="-phys elm"
   ./xmlchange PTS_MULTCOLS_MODE="TRUE",PTS_MODE="TRUE",PTS_LAT="$lat",PTS_LON="$lon"
   ./xmlchange MASK_GRID="USGS",PTS_NX="${comp_mods_nx}",PTS_NY=1
   ./xmlchange CALENDAR="GREGORIAN"
+  
   
 # Set model timesteps
 # NOTE that if you change the resolution it is up to YOU

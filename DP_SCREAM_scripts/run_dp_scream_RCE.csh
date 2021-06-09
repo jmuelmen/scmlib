@@ -3,8 +3,8 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  GATEIII
-#######  Maritime deep convection
+#######  RCE
+#######  Radiative Convective Equilibrium
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
 
@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_GATEIII
+  setenv casename scream_dp_RCE
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -81,19 +81,20 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 9.00 # latitude
-  set lon = 336.0 # longitude
+  set lat = 0.0 # latitude
+  set lon = 0.0 # longitude
   set do_iop_srf_prop = .false. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
-  set do_iop_nudge_uv = .true. # Relax U&V to observations?
+  set do_iop_nudge_uv = .false. # Relax U&V to observations?
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 1974-08-30 # Start date in IOP file
+  set startdate = 0000-01-01 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
   set stop_option = ndays
   set stop_n = 20
-  set iop_file = GATEIII_iopfile_4scam.nc #IOP file name
+  set iop_file = RCE_iopfile_4scam.nc #IOP file name
+  set sst_val = 300 # set constant SST value (ONLY valid for RCE case)
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)
@@ -111,7 +112,7 @@
 
   cd $E3SMROOT/cime/scripts
 
-  set compset=F2000-SCREAM-HR
+  set compset=F-EAM-RCEMIP
 
   # Note that in DP-SCREAM the grid is set ONLY to initialize
   #  the model from these files
@@ -162,6 +163,7 @@
   set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
+  ./xmlchange --id CAM_CONFIG_OPTS --append --val='-rce -aquaplanet'
 
   # Always run with the theta-l version of HOMME
   ./xmlchange CAM_TARGET=theta-l
@@ -190,6 +192,7 @@ cat <<EOF >> user_nl_eam
  iopfile = '$input_data_dir/$iop_path/$iop_file'
  pertlim = 0.001
  iop_perturb_high = 900.0D0
+ ncdata='$input_data_dir/atm/cam/inic/homme/cami_mam3_Linoz_ne30np4_SCREAM_L128_c160214.nc'
 EOF
 
 #./case.setup
@@ -261,8 +264,6 @@ cat <<EOF>> user_nl_elm
   hist_empty_htapes = .true.
 EOF
 
-set ELM_CONFIG_OPTS="-phys elm"
-./xmlchange ELM_CONFIG_OPTS="$ELM_CONFIG_OPTS"
 
 # Modify the run start and duration parameters for the desired case
   ./xmlchange RUN_STARTDATE="$startdate",START_TOD="$start_in_sec",STOP_OPTION="$stop_option",STOP_N="$stop_n"
@@ -273,15 +274,14 @@ set ELM_CONFIG_OPTS="-phys elm"
 # Modify the latitude and longitude for the particular case
   ./xmlchange PTS_MULTCOLS_MODE="TRUE",PTS_MODE="TRUE",PTS_LAT="$lat",PTS_LON="$lon"
   ./xmlchange MASK_GRID="USGS",PTS_NX="${comp_mods_nx}",PTS_NY=1
-  ./xmlchange CALENDAR="GREGORIAN"
   
+  ./xmlchange DOCN_AQPCONST_VALUE=$sst_val
   
 # Set model timesteps
 # NOTE that if you change the resolution it is up to YOU
 #  to adjust timesteps appropriately
   ./xmlchange ATM_NCPL=720
   ./xmlchange CAM_NAMELIST_OPTS="dtime=120"
-  ./xmlchange ELM_NAMELIST_OPTS="dtime=120"
   
   ./case.setup 
 
@@ -291,7 +291,6 @@ set ELM_CONFIG_OPTS="-phys elm"
   ./xmlchange REST_N=30000
 
 # Tell CICE explicitly how many columns it has
-  ./xmlchange CICE_CONFIG_OPTS="-nx ${comp_mods_nx} -ny 1"
 
 # Build the case
   ./case.build
