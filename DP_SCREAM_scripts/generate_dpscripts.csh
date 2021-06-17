@@ -270,15 +270,15 @@ sed -i s/CASEstartinsec/0/ $outfile
 sed -i s/CASEstopoption/ndays/ $outfile
 sed -i s/CASEstopn/20/ $outfile
 sed -i s/CASEdebug/false/ $outfile
-sed -i s/CASEnumprocs/256/ $outfile
-sed -i s/CASEnex/20/ $outfile
-sed -i s/CASEney/20/ $outfile
-sed -i s/CASElex/200000/ $outfile
-sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEnumprocs/512/ $outfile
+sed -i s/CASEnex/50/ $outfile
+sed -i s/CASEney/50/ $outfile
+sed -i s/CASElex/500000/ $outfile
+sed -i s/CASEley/500000/ $outfile
 sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
-sed -i s/CASEwalltime/04:00:00/ $outfile
+sed -i s/CASEwalltime/12:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 sed -i s/F2000-SCREAM-HR/F-EAM-RCEMIP/ $outfile
 sed -i s/CASEconfigappend/"'-rce -aquaplanet'"/ $outfile

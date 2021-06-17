@@ -29,48 +29,48 @@
   # Name of project to run on, if submitting to queue
   setenv projectname cbronze
 
-  
-  # Set to debug queue? 
+
+  # Set to debug queue?
   # - Some cases are small enough to run on debug queues
   # - Setting to true only supported for NERSC and Livermore Computing,
   #   else user will need to modify script to submit to debug queue
   setenv debug_queue false
-  
+
   # Set number of processors to use
   set num_procs = 256
-  
+
   # set walltime
   set walltime = '05:00:00'
 
   ## SET DOMAIN SIZE AND RESOLUTION:
   # - Note that these scripts are set to run with dx=dy=3.33 km
   # which is the default SCREAM resolution.
-  # - If you wish to change the resolution, please note that it is up
-  # to YOU to adjust the time steps appropriately (see namelist and
-  # config options in this script)
-  
+
   # To estimate dx (analogous for dy):
   # Note there are 3x3 columns per element:
   # dx = domain_size_x / (num_ne_x * 3)
-  
+
   # Set number of elements in the x&y directions
   set num_ne_x = 20
   set num_ne_y = 20
-  
+
   # Set domain length (in m) in x&y direction
   set domain_size_x = 200000
   set domain_size_y = 200000
 
-# User enter any needed modules to load or use below
-#  EXAMPLE:
-#  module load python/2.7.5
+  # SET MODEL TIME STEP (in s).  NOTE that if you change the model resolution,
+  #  it is likely the timestep will need to be adjusted.  Adjusting this
+  #  time step may not be comprehensive, as dynamics related settings may
+  #  also need to be modified (see namelist)
+
+  set model_dtime = 120
 
 ####### END (mandatory) USER DEFINED SETTINGS
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
 #######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
 #######  - User has changed the resolution which may require adjustment
-#######    of the model timesteps.
+#######    of the dynamics time step settings.
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
@@ -98,7 +98,7 @@
 
   # Aerosol specification (for SCREAM always prescribed)
   set init_aero_type = prescribed
-  
+
   # Location of IOP file
   set iop_path = atm/cam/scam/iop
 
@@ -158,12 +158,12 @@
     ./xmlchange  NTASKS_$component=$npes,NTHRDS_$component=1
   end
 
-# CAM configure options.  By default set up with settings the same as E3SMv1
+# CAM configure options.  Set to SCREAM default settings.
   set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
 
-  # Always run with the theta-l version of HOMME
+  # Always run with the theta-l version of HOMME, the default for SCREAM
   ./xmlchange CAM_TARGET=theta-l
 
 # Runtime specific namelist information
@@ -185,18 +185,16 @@ cat <<EOF >> user_nl_eam
  scmlat = $lat
  scmlon = $lon
  iradsw = 5
- iradlw = 5 
+ iradlw = 5
  scm_iop_srf_prop = $do_iop_srf_prop
  iopfile = '$input_data_dir/$iop_path/$iop_file'
  pertlim = 0.001
  iop_perturb_high = 900.0D0
 EOF
 
-#./case.setup
-
 # Timestepping stuff related to DP-SCREAM
-# NOTE, if you change resolution from default it is up to YOU
-#  to determine correct settings for the below.
+# NOTE, if you change resolution from default it may be required to
+#  change some of these settings.
 cat <<EOF >> user_nl_eam
  transport_alg         = 0
  semi_lagrange_cdr_alg = 20
@@ -216,9 +214,9 @@ cat <<EOF >> user_nl_eam
  se_nsplit              =   30
  se_partmethod          =  4
  semi_lagrange_nearest_point_lev = 100
- theta_hydrostatic_mode=.false. 
+ theta_hydrostatic_mode=.false.
  tstep_type = 9
- theta_advect_form=1 
+ theta_advect_form=1
  vert_remap_q_alg               =  10
  vthreads               =  1
  se_tstep = -1
@@ -257,6 +255,8 @@ cat <<EOF >> user_nl_cice
   histfreq='y','x','x','x','x'
 EOF
 
+# ELM output is temporarily broken for DP-SCREAM.  For now turn it off.
+#  NOTE: this is a to do item to figure out.
 cat <<EOF>> user_nl_elm
   hist_empty_htapes = .true.
 EOF
@@ -267,28 +267,27 @@ set ELM_CONFIG_OPTS="-phys elm"
 # Modify the run start and duration parameters for the desired case
   ./xmlchange RUN_STARTDATE="$startdate",START_TOD="$start_in_sec",STOP_OPTION="$stop_option",STOP_N="$stop_n"
 
-# Compute number of points needed for component model initialization
+# Compute number of columns needed for component model initialization
   set comp_mods_nx = `expr $num_ne_x \* $num_ne_y \* 9`
 
 # Modify the latitude and longitude for the particular case
   ./xmlchange PTS_MULTCOLS_MODE="TRUE",PTS_MODE="TRUE",PTS_LAT="$lat",PTS_LON="$lon"
   ./xmlchange MASK_GRID="USGS",PTS_NX="${comp_mods_nx}",PTS_NY=1
   ./xmlchange CALENDAR="GREGORIAN"
-  
-  
-# Set model timesteps
-# NOTE that if you change the resolution it is up to YOU
-#  to adjust timesteps appropriately
-  ./xmlchange ATM_NCPL=720
-  ./xmlchange CAM_NAMELIST_OPTS="dtime=120"
-  ./xmlchange ELM_NAMELIST_OPTS="dtime=120"
-  
-  ./case.setup 
 
-# Don't want to write restarts as this appears to be broken for
-#  CICE model in SCM.  For now set this to a high value to avoid
+
+# Set model timesteps
+
+  @ ncpl = 86400 / $model_dtime
+  ./xmlchange ATM_NCPL=$ncpl
+  ./xmlchange CAM_NAMELIST_OPTS="dtime=$model_dtime"
+  ./xmlchange ELM_NAMELIST_OPTS="dtime=$model_dtime"
+
+  ./case.setup
+
+# Write restart files at the end of model simulation
   ./xmlchange PIO_TYPENAME="netcdf"
-  ./xmlchange REST_N=30000
+  ./xmlchange REST_OPTION="end"
 
 # Tell CICE explicitly how many columns it has
   ./xmlchange CICE_CONFIG_OPTS="-nx ${comp_mods_nx} -ny 1"
