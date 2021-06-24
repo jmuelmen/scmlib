@@ -40,7 +40,7 @@
   set num_procs = 512
 
   # set walltime
-  set walltime = '12:00:00'
+  set walltime = '16:00:00'
 
   ## SET DOMAIN SIZE AND RESOLUTION:
   # - Note that these scripts are set to run with dx=dy=3.33 km
@@ -89,7 +89,7 @@
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 0000-01-01 # Start date in IOP file
+  set startdate = 2000-01-01 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
   set stop_option = ndays
   set stop_n = 20
@@ -180,6 +180,7 @@ cat <<EOF >> user_nl_eam
  iop_dosubsidence = $do_iop_subsidence
  iop_nudge_tq = $do_iop_nudge_tq
  iop_nudge_uv = $do_iop_nudge_uv
+ history_aerosol = .false.
  fincl2='CLDLOW','CLDMED','CLDHGH','CLDTOT','CDNUMC','DTENDTH','DTENDTQ','FLDS','FLNS','FLNSC','FLNT','FLNTC','FLUT','FLUTC','FSDS','FSDSC','FSNS','FSNSC','FSNT','FSNTC','FSNTOA','FSNTOAC','FSUTOA','FSUTOAC','LHFLX','SHFLX','LWCF','SWCF','OMEGA500','PRECL','PS','QREFHT','SOLIN','TAUX','TAUY','TGCLDCWP','TGCLDIWP','TGCLDLWP','TH7001000','TMQ','TREFHT','TS','WINDSPD_10M','crm_grid_x','crm_grid_y'
  mfilt = 5000, 5000
  nhtfrq = -24, -1
@@ -274,6 +275,7 @@ EOF
 # Modify the latitude and longitude for the particular case
   ./xmlchange PTS_MULTCOLS_MODE="TRUE",PTS_MODE="TRUE",PTS_LAT="$lat",PTS_LON="$lon"
   ./xmlchange MASK_GRID="USGS",PTS_NX="${comp_mods_nx}",PTS_NY=1
+  ./xmlchange ICE_NX="${comp_mods_nx}",ICE_NY=1
 
   ./xmlchange DOCN_AQPCONST_VALUE=$sst_val
 
@@ -288,8 +290,6 @@ EOF
 # Write restart files at the end of model simulation
   ./xmlchange PIO_TYPENAME="netcdf"
   ./xmlchange REST_OPTION="end"
-
-# Tell CICE explicitly how many columns it has
 
 # Build the case
   ./case.build

@@ -179,6 +179,7 @@ cat <<EOF >> user_nl_eam
  iop_dosubsidence = $do_iop_subsidence
  iop_nudge_tq = $do_iop_nudge_tq
  iop_nudge_uv = $do_iop_nudge_uv
+ history_aerosol = .false.
  fincl2='CLDLOW','CLDMED','CLDHGH','CLDTOT','CDNUMC','DTENDTH','DTENDTQ','FLDS','FLNS','FLNSC','FLNT','FLNTC','FLUT','FLUTC','FSDS','FSDSC','FSNS','FSNSC','FSNT','FSNTC','FSNTOA','FSNTOAC','FSUTOA','FSUTOAC','LHFLX','SHFLX','LWCF','SWCF','OMEGA500','PRECL','PS','QREFHT','SOLIN','TAUX','TAUY','TGCLDCWP','TGCLDIWP','TGCLDLWP','TH7001000','TMQ','TREFHT','TS','WINDSPD_10M','crm_grid_x','crm_grid_y'
  mfilt = 5000, 5000
  nhtfrq = -24, -1
@@ -274,6 +275,7 @@ set ELM_CONFIG_OPTS="-phys elm"
 # Modify the latitude and longitude for the particular case
   ./xmlchange PTS_MULTCOLS_MODE="TRUE",PTS_MODE="TRUE",PTS_LAT="$lat",PTS_LON="$lon"
   ./xmlchange MASK_GRID="USGS",PTS_NX="${comp_mods_nx}",PTS_NY=1
+  ./xmlchange ICE_NX="${comp_mods_nx}",ICE_NY=1
   ./xmlchange CALENDAR="GREGORIAN"
 
 
@@ -289,9 +291,6 @@ set ELM_CONFIG_OPTS="-phys elm"
 # Write restart files at the end of model simulation
   ./xmlchange PIO_TYPENAME="netcdf"
   ./xmlchange REST_OPTION="end"
-
-# Tell CICE explicitly how many columns it has
-  ./xmlchange CICE_CONFIG_OPTS="-nx ${comp_mods_nx} -ny 1"
 
 # Build the case
   ./case.build
