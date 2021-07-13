@@ -47,8 +47,8 @@
   # which is the default SCREAM resolution.
 
   # To estimate dx (analogous for dy):
-  # Note there are 3x3 columns per element:
   # dx = domain_size_x / (num_ne_x * 3)
+  # (there are 3x3 unique columns per element, hence the "3" factor)
 
   # Set number of elements in the x&y directions
   set num_ne_x = 20
@@ -65,17 +65,19 @@
 
   set model_dtime = 120
 
-####### END (mandatory) USER DEFINED SETTINGS
+####### END (mandatory) USER DEFINED SETTINGS, but...
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
 #######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
 #######  - User has changed the resolution which may require adjustment
-#######    of the dynamics time step settings.
+#######    of the dynamics time step settings (bogenschutz1@llnl.gov has run
+#######    several cases at a range of resolutions and may be able to
+#######    advise you on the appropriate settings).
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
 #######    - *eam.h1* tapes contain instantaneous 2D fields output hourly
-#######    - ALL/any of this can be modified by the user
+#######    - ALL/any of this can be modified by the user based on needs
 ###########################################################################
 ###########################################################################
 ###########################################################################
@@ -226,6 +228,9 @@ cat <<EOF >> user_nl_eam
  cld_macmic_num_steps = 1
  hypervis_scaling =  3.0
  shoc_timestep = -1
+ shoc_thl2tune = 1.0
+ shoc_qw2tune = 1.0
+ shoc_qwthl2tune = 1.0
 EOF
 
 # Settings related to domain size and resolution

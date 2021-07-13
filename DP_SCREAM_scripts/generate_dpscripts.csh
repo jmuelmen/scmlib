@@ -31,7 +31,7 @@ cp -r run_dp_scream_TEMPLATE.csh $outfile
 sed -i s/THECASENAME/$casename/ $outfile
 sed -i s/THECASEDESCRIPTION/"Non-precipitating marine stratocumulus"/ $outfile
 sed -i s/CASElat/31.5/ $outfile
-sed -i s/CASElon/239.0/ $outfile
+sed -i s/CASElon/238.500/ $outfile
 sed -i s/CASEsrfprop/.true./ $outfile
 sed -i s/CASEswoff/.true./ $outfile
 sed -i s/CASElwoff/.false./ $outfile
@@ -49,7 +49,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/-12/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
 
 ################################
 # DYCOMSRF02
@@ -62,7 +62,7 @@ sed -i s/THECASENAME/$casename/ $outfile
 sed -i s/THECASEDESCRIPTION/"Drizzling marine stratocumulus"/ $outfile
 sed -i s/AEROTYPE/observed/ $outfile
 sed -i s/CASElat/31.5/ $outfile
-sed -i s/CASElon/239.0/ $outfile
+sed -i s/CASElon/238.500/ $outfile
 sed -i s/CASEsrfprop/.true./ $outfile
 sed -i s/CASEswoff/.true./ $outfile
 sed -i s/CASElwoff/.false./ $outfile
@@ -80,7 +80,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/-12/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
 
 ################################
 # GATE
@@ -121,8 +121,8 @@ set outfile = run_dp_scream_$casename.csh
 cp -r run_dp_scream_TEMPLATE.csh $outfile
 sed -i s/THECASENAME/$casename/ $outfile
 sed -i s/THECASEDESCRIPTION/"Deep convection over ARM SGP site"/ $outfile
-sed -i s/CASElat/36.6/ $outfile
-sed -i s/CASElon/262.5/ $outfile
+sed -i s/CASElat/36.605/ $outfile
+sed -i s/CASElon/262.515/ $outfile
 sed -i s/CASEsrfprop/.true./ $outfile
 sed -i s/CASEswoff/.false./ $outfile
 sed -i s/CASElwoff/.false./ $outfile
@@ -170,7 +170,7 @@ sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
-sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
 
 ################################
 # TWP06
@@ -203,6 +203,37 @@ sed -i s/CASEwalltime/05:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
+# MPACEB
+################################
+
+set casename = MPACEB
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Mixed phase Arctic clouds subset"/ $outfile
+sed -i s/CASElat/71.75/ $outfile
+sed -i s/CASElon/209.0/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/1999-10-09/ $outfile
+sed -i s/CASEstartinsec/61200/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEstopn/12/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.true./ $outfile
+sed -i s/CASEwalltime/01:00:00/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
 # MPACE full
 ################################
 
@@ -224,12 +255,12 @@ sed -i s/CASEstartdate/2004-10-05/ $outfile
 sed -i s/CASEstartinsec/7200/ $outfile
 sed -i s/CASEstopoption/ndays/ $outfile
 sed -i s/CASEdebug/true/ $outfile
-sed -i s/CASEnumprocs/16/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
 sed -i s/CASEstopn/17/ $outfile
-sed -i s/CASEnex/5/ $outfile
-sed -i s/CASEney/5/ $outfile
-sed -i s/CASElex/50000/ $outfile
-sed -i s/CASEley/50000/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
 sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile

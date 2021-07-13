@@ -3,16 +3,17 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  DYCOMSrf02
-#######  Drizzling marine stratocumulus
+#######  MPACEB
+#######  Mixed phase Arctic clouds subset
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
+#######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
 
 #######################################################
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_DYCOMSrf02
+  setenv casename scream_dp_MPACEB
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -34,13 +35,13 @@
   # - Some cases are small enough to run on debug queues
   # - Setting to true only supported for NERSC and Livermore Computing,
   #   else user will need to modify script to submit to debug queue
-  setenv debug_queue true
+  setenv debug_queue false
 
   # Set number of processors to use
-  set num_procs = 16
+  set num_procs = 128
 
   # set walltime
-  set walltime = '00:30:00'
+  set walltime = '01:00:00'
 
   ## SET DOMAIN SIZE AND RESOLUTION:
   # - Note that these scripts are set to run with dx=dy=3.33 km
@@ -51,12 +52,12 @@
   # (there are 3x3 unique columns per element, hence the "3" factor)
 
   # Set number of elements in the x&y directions
-  set num_ne_x = 5
-  set num_ne_y = 5
+  set num_ne_x = 20
+  set num_ne_y = 20
 
   # Set domain length (in m) in x&y direction
-  set domain_size_x = 50000
-  set domain_size_y = 50000
+  set domain_size_x = 200000
+  set domain_size_y = 200000
 
   # SET MODEL TIME STEP (in s).  NOTE that if you change the model resolution,
   #  it is likely the timestep will need to be adjusted.  Adjusting this
@@ -83,19 +84,19 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 31.5 # latitude
-  set lon = 238.500 # longitude
+  set lat = 71.75 # latitude
+  set lon = 209.0 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
   set do_iop_nudge_uv = .false. # Relax U&V to observations?
   set do_iop_subsidence = .true. # compute LS vertical transport?
-  set do_turnoff_swrad = .true. # Turn off SW calculation
+  set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 1999-07-11 # Start date in IOP file
-  set start_in_sec = 0 # start time in seconds in IOP file
+  set startdate = 1999-10-09 # Start date in IOP file
+  set start_in_sec = 61200 # start time in seconds in IOP file
   set stop_option = nhours
   set stop_n = 12
-  set iop_file = DYCOMSrf02_iopfile_4scam.nc #IOP file name
+  set iop_file = MPACEB_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)
