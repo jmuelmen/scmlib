@@ -86,6 +86,8 @@
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
+#######      (for multi-day cases) or hourly (for shorter boundary layer
+#######      cloud cases)
 #######    - *eam.h1* tapes contain instantaneous 2D fields output hourly
 #######    - ALL/any of this can be modified by the user based on needs
 ###########################################################################

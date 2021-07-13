@@ -38,7 +38,7 @@ sed -i s/CASElwoff/.false./ $outfile
 sed -i s/CASEstartdate/1999-07-10/ $outfile
 sed -i s/CASEstartinsec/0/ $outfile
 sed -i s/CASEstopoption/nhours/ $outfile
-sed -i s/CASEstopn/12/ $outfile
+sed -i s/CASEstopn/6/ $outfile
 sed -i s/CASEdebug/true/ $outfile
 sed -i s/CASEnumprocs/16/ $outfile
 sed -i s/CASEnex/5/ $outfile
@@ -69,7 +69,7 @@ sed -i s/CASElwoff/.false./ $outfile
 sed -i s/CASEstartdate/1999-07-11/ $outfile
 sed -i s/CASEstartinsec/0/ $outfile
 sed -i s/CASEstopoption/nhours/ $outfile
-sed -i s/CASEstopn/12/ $outfile
+sed -i s/CASEstopn/6/ $outfile
 sed -i s/CASEdebug/true/ $outfile
 sed -i s/CASEnumprocs/16/ $outfile
 sed -i s/CASEnex/5/ $outfile
@@ -158,10 +158,10 @@ sed -i s/CASEswoff/.true./ $outfile
 sed -i s/CASElwoff/.true./ $outfile
 sed -i s/CASEstartdate/1969-06-25/ $outfile
 sed -i s/CASEstartinsec/0/ $outfile
-sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
 sed -i s/CASEdebug/true/ $outfile
 sed -i s/CASEnumprocs/16/ $outfile
-sed -i s/CASEstopn/1/ $outfile
+sed -i s/CASEstopn/6/ $outfile
 sed -i s/CASEnex/5/ $outfile
 sed -i s/CASEney/5/ $outfile
 sed -i s/CASElex/50000/ $outfile

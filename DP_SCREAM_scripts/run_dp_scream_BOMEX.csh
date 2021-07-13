@@ -76,6 +76,8 @@
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
+#######      (for multi-day cases) or hourly (for shorter boundary layer
+#######      cloud cases)
 #######    - *eam.h1* tapes contain instantaneous 2D fields output hourly
 #######    - ALL/any of this can be modified by the user based on needs
 ###########################################################################
@@ -93,8 +95,8 @@
   set do_turnoff_lwrad = .true. # Turn off LW calculation
   set startdate = 1969-06-25 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
-  set stop_option = ndays
-  set stop_n = 1
+  set stop_option = nhours
+  set stop_n = 6
   set iop_file = BOMEX_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 

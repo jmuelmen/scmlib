@@ -76,6 +76,8 @@
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
+#######      (for multi-day cases) or hourly (for shorter boundary layer
+#######      cloud cases)
 #######    - *eam.h1* tapes contain instantaneous 2D fields output hourly
 #######    - ALL/any of this can be modified by the user based on needs
 ###########################################################################
@@ -94,7 +96,7 @@
   set startdate = 1999-07-11 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
   set stop_option = nhours
-  set stop_n = 12
+  set stop_n = 6
   set iop_file = DYCOMSrf02_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
