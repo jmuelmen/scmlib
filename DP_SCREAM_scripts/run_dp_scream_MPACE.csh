@@ -171,6 +171,20 @@
   # Always run with the theta-l version of HOMME, the default for SCREAM
   ./xmlchange CAM_TARGET=theta-l
 
+# if we want to turn off SW radiation, then set appropriate namelist settings here
+  if ($do_turnoff_swrad == true) then
+    set iradsw_in = 0
+  else
+    set iradsw_in = 5
+  endif
+
+# if we want to turn off LW radiation, then set appropriate namelist settings here
+  if ($do_turnoff_lwrad == true) then
+    set iradlw_in = 0
+  else
+    set iradlw_in = 5
+  endif
+
 # Runtime specific namelist information
 cat <<EOF >> user_nl_eam
  use_gw_front = .false.
@@ -178,8 +192,6 @@ cat <<EOF >> user_nl_eam
  use_gw_convect = .false.
  deep_scheme = 'off'
  convproc_do_aer = .false.
- swrad_off = $do_turnoff_swrad
- lwrad_off = $do_turnoff_lwrad
  iop_dosubsidence = $do_iop_subsidence
  iop_nudge_tq = $do_iop_nudge_tq
  iop_nudge_uv = $do_iop_nudge_uv
@@ -190,8 +202,8 @@ cat <<EOF >> user_nl_eam
  avgflag_pertape='A','I'
  scmlat = $lat
  scmlon = $lon
- iradsw = 5
- iradlw = 5
+ iradsw = $iradsw_in
+ iradlw = $iradlw_in
  scm_iop_srf_prop = $do_iop_srf_prop
  iopfile = '$input_data_dir/$iop_path/$iop_file'
  pertlim = 0.001
