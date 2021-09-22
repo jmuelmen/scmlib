@@ -64,7 +64,7 @@
   #  time step may not be comprehensive, as dynamics related settings may
   #  also need to be modified (see namelist)
 
-  set model_dtime = 120
+  set model_dtime = 100
 
 ####### END (mandatory) USER DEFINED SETTINGS, but...
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
@@ -109,14 +109,14 @@
 
   # Prescribed aerosol file path and name
   set presc_aero_path = atm/cam/chem/trop_mam/aero
-  set presc_aero_file = mam4_0.9x1.2_L72_2000clim_c170323.nc
+  set presc_aero_file = mam4_0.9x1.2_L128_2000clim_c191106.nc
 
   set PROJECT=$projectname
   set E3SMROOT=${code_dir}/${code_tag}
 
   cd $E3SMROOT/cime/scripts
 
-  set compset=F2000-SCREAM-HR
+  set compset=F2010-SCREAM-HR
 
   # Note that in DP-SCREAM the grid is set ONLY to initialize
   #  the model from these files
@@ -172,17 +172,17 @@
   ./xmlchange CAM_TARGET=theta-l
 
 # if we want to turn off SW radiation, then set appropriate namelist settings here
-  if ($do_turnoff_swrad == true) then
+  if ($do_turnoff_swrad == '.true.') then
     set iradsw_in = 0
   else
-    set iradsw_in = 5
+    set iradsw_in = 3
   endif
 
 # if we want to turn off LW radiation, then set appropriate namelist settings here
-  if ($do_turnoff_lwrad == true) then
+  if ($do_turnoff_lwrad == '.true.') then
     set iradlw_in = 0
   else
-    set iradlw_in = 5
+    set iradlw_in = 3
   endif
 
 # Runtime specific namelist information
@@ -214,38 +214,18 @@ EOF
 # NOTE, if you change resolution from default it may be required to
 #  change some of these settings.
 cat <<EOF >> user_nl_eam
- transport_alg         = 0
- semi_lagrange_cdr_alg = 20
- hypervis_order         =      2
- hypervis_subcycle              =   1
- hypervis_subcycle_tom = 1
- hypervis_subcycle_q            =  1
- nu             =   0.216784
- nu_div         =   -1
- nu_p           =   -1
- nu_q           =   -1
- nu_top         =  0
- qsplit         =  -1
- rsplit         =   -1
- se_ftype               = 4
- se_limiter_option              =  9
- se_nsplit              =   30
- se_partmethod          =  4
- semi_lagrange_nearest_point_lev = 100
- theta_hydrostatic_mode=.false.
- tstep_type = 9
- theta_advect_form=1
- vert_remap_q_alg               =  10
- vthreads               =  1
- se_tstep = -1
- dt_remap_factor = 1
+ se_tstep=8.333333333333333d0
+ cldfrc_iceopt = 7
+ transport_alg = 0
  dt_tracer_factor = 1
- cld_macmic_num_steps = 1
- hypervis_scaling =  3.0
+ hypervis_subcycle_q = 1
+ dt_remap_factor = 1
+ nu             =   0.216784
+ nu_top         =  1e4
+ se_ftype       = 2
+ cubed_sphere_map = 2
+ cld_macmic_num_steps =  1
  shoc_timestep = -1
- shoc_thl2tune = 1.0
- shoc_qw2tune = 1.0
- shoc_qwthl2tune = 1.0
 EOF
 
 # Settings related to domain size and resolution
@@ -257,17 +237,13 @@ cat <<EOF >> user_nl_eam
  se_ly = $domain_size_y
 EOF
 
-# Tuning parameters related to the prescribed aerosol model
 cat <<EOF >> user_nl_eam
-  use_hetfrz_classnuc = .false.
-  aerodep_flx_type = 'CYCLICAL'
-  aerodep_flx_datapath = '$input_data_dir/$presc_aero_path'
-  aerodep_flx_file = '$presc_aero_file'
-  aerodep_flx_cycle_yr = 01
-  prescribed_aero_type = 'CYCLICAL'
-  prescribed_aero_datapath='$input_data_dir/$presc_aero_path'
-  prescribed_aero_file='$presc_aero_file'
-  prescribed_aero_cycle_yr = 01
+ do_prescribed_CCN = .true.
+ do_spa_optics = .true.
+ spa_file = 'spa_file_unified_and_clipped.nc'
+ spa_datapath = '$input_data_dir/atm/cam/chem/spa'
+ spa_type = 'CYCLICAL'
+ spa_cycle_yr = 1
 EOF
 
 # avoid the monthly cice file from writing as this

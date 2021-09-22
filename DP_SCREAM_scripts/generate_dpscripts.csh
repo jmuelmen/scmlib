@@ -143,6 +143,36 @@ sed -i s/CASEwalltime/05:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
+# ARM Shallow convection
+################################
+
+set casename = ARM_shallow
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"ARM GCSS shallow convection"/ $outfile
+sed -i s/CASElat/36.605/ $outfile
+sed -i s/CASElon/262.515/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/1997-06-21/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEstopn/14/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/16/ $outfile
+sed -i s/CASEnex/5/ $outfile
+sed -i s/CASEney/5/ $outfile
+sed -i s/CASElex/50000/ $outfile
+sed -i s/CASEley/50000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
+
+################################
 # BOMEX
 ################################
 
@@ -169,6 +199,66 @@ sed -i s/CASEley/50000/ $outfile
 sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
+
+################################
+# RICO
+################################
+
+set casename = RICO
+set outfile = run_dp_scream_$casename.csh
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Precipitating trade-wind cumulus convection"/ $outfile
+sed -i s/CASElat/17.97/ $outfile
+sed -i s/CASElon/298.54/ $outfile
+sed -i s/CASEsrfprop/.false./ $outfile
+sed -i s/CASEswoff/.true./ $outfile
+sed -i s/CASElwoff/.true./ $outfile
+sed -i s/CASEstartdate/2004-12-16/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEdebug/true/ $outfile
+sed -i s/CASEnumprocs/16/ $outfile
+sed -i s/CASEstopn/24/ $outfile
+sed -i s/CASEnex/5/ $outfile
+sed -i s/CASEney/5/ $outfile
+sed -i s/CASElex/50000/ $outfile
+sed -i s/CASEley/50000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.true./ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
+
+################################
+# LBA
+################################
+
+set casename = LBA
+set outfile = run_dp_scream_$casename.csh
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"LBA Transition from shallow cumulus to deep convection"/ $outfile
+sed -i s/CASElat/3.0/ $outfile
+sed -i s/CASElon/300.0/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/1999-02-23/ $outfile
+sed -i s/CASEstartinsec/41400/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEstopn/6/ $outfile
+sed -i s/CASEdebug/true/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/15/ $outfile
+sed -i s/CASEney/15/ $outfile
+sed -i s/CASElex/150000/ $outfile
+sed -i s/CASEley/150000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
 sed -i s/CASEnhtfrq/-1/ $outfile
 
@@ -220,16 +310,16 @@ sed -i s/CASEstartdate/1999-10-09/ $outfile
 sed -i s/CASEstartinsec/61200/ $outfile
 sed -i s/CASEstopoption/nhours/ $outfile
 sed -i s/CASEstopn/12/ $outfile
-sed -i s/CASEdebug/false/ $outfile
-sed -i s/CASEnumprocs/128/ $outfile
-sed -i s/CASEnex/20/ $outfile
-sed -i s/CASEney/20/ $outfile
-sed -i s/CASElex/200000/ $outfile
-sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEdebug/true/ $outfile
+sed -i s/CASEnumprocs/16/ $outfile
+sed -i s/CASEnex/5/ $outfile
+sed -i s/CASEney/5/ $outfile
+sed -i s/CASElex/50000/ $outfile
+sed -i s/CASEley/50000/ $outfile
 sed -i s/CASEtqnudge/.false./ $outfile
 sed -i s/CASEuvnudge/.false./ $outfile
 sed -i s/CASEdosub/.true./ $outfile
-sed -i s/CASEwalltime/01:00:00/ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
 sed -i s/CASEnhtfrq/-1/ $outfile
 sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
 
