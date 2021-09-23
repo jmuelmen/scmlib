@@ -240,7 +240,7 @@ EOF
 cat <<EOF >> user_nl_eam
  do_prescribed_CCN = .true.
  do_spa_optics = .true.
- spa_file = 'spa_file_unified_and_clipped.nc'
+ spa_file = 'spa_mixing_ratio_data.nc'
  spa_datapath = '$input_data_dir/atm/cam/chem/spa'
  spa_type = 'CYCLICAL'
  spa_cycle_yr = 1
