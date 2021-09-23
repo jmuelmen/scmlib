@@ -174,7 +174,7 @@
   end
 
 # CAM configure options.  Set to SCREAM default settings.
-  set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem none"
+  set CAM_CONFIG_OPTS="-phys default -scam -dpcrm_mode -nlev 128 -shoc_sgs -microphys p3 -rad rrtmgp -chem spa"
 
   ./xmlchange CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS"
   ./xmlchange --id CAM_CONFIG_OPTS --append --val=CASEconfigappend
@@ -247,15 +247,6 @@ cat <<EOF >> user_nl_eam
  se_ne_y = $num_ne_y
  se_lx = $domain_size_x
  se_ly = $domain_size_y
-EOF
-
-cat <<EOF >> user_nl_eam
- do_prescribed_CCN = .true.
- do_spa_optics = .true.
- spa_file = 'spa_mixing_ratio_data.nc'
- spa_datapath = '$input_data_dir/atm/cam/chem/spa'
- spa_type = 'CYCLICAL'
- spa_cycle_yr = 1
 EOF
 
 # avoid the monthly cice file from writing as this
