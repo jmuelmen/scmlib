@@ -94,7 +94,7 @@
   set do_iop_subsidence = .true. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 1999-10-09 # Start date in IOP file
+  set startdate = 2004-10-09 # Start date in IOP file
   set start_in_sec = 61200 # start time in seconds in IOP file
   set stop_option = nhours
   set stop_n = 12
@@ -226,6 +226,9 @@ cat <<EOF >> user_nl_eam
  cubed_sphere_map = 2
  cld_macmic_num_steps =  1
  shoc_timestep = -1
+ shoc_thl2tune = 1.0
+ shoc_qw2tune = 1.0
+ shoc_qwthl2tune = 1.0
 EOF
 
 # Settings related to domain size and resolution
