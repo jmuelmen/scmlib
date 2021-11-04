@@ -98,6 +98,7 @@
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
 #######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
+#######  - The user wants to run a subset of the selected case.
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily

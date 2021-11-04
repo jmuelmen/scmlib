@@ -3,8 +3,8 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  MPACE
-#######  Mixed phase Arctic clouds Full IOP
+#######  DYNAMO_northsounding
+#######  Dynamics of the Madden Julian Oscillation North Sounding
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
 #######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
@@ -13,7 +13,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_MPACE
+  setenv casename scream_dp_DYNAMO_northsounding
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -30,18 +30,23 @@
   # Name of project to run on, if submitting to queue
   setenv projectname cbronze
 
+  # NOTE: This is a long case! Consider selecting a subset timeperiod to run on
+  # Possible range from Oct. 2nd 2011 through December 2011
+  set startdate = 2011-10-02
+  set stop_option = ndays
+  set stop_n = 90
 
   # Set to debug queue?
   # - Some cases are small enough to run on debug queues
   # - Setting to true only supported for NERSC and Livermore Computing,
   #   else user will need to modify script to submit to debug queue
-  setenv debug_queue true
+  setenv debug_queue false
 
   # Set number of processors to use
   set num_procs = 256
 
   # set walltime
-  set walltime = '00:30:00'
+  set walltime = '05:00:00'
 
   ## SET DOMAIN SIZE AND RESOLUTION:
   # - Note that these scripts are set to run with dx=dy=3.33 km
@@ -102,19 +107,16 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 70.5 # latitude
-  set lon = 206.0 # longitude
+  set lat = 3.0 # latitude
+  set lon = 76.5 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
-  set do_iop_nudge_uv = .false. # Relax U&V to observations?
-  set do_iop_subsidence = .true. # compute LS vertical transport?
+  set do_iop_nudge_uv = .true. # Relax U&V to observations?
+  set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 2004-10-05 # Start date in IOP file
-  set start_in_sec = 7200 # start time in seconds in IOP file
-  set stop_option = ndays
-  set stop_n = 17
-  set iop_file = MPACE_iopfile_4scam.nc #IOP file name
+  set start_in_sec = 0 # start time in seconds in IOP file
+  set iop_file = DYNAMO_northsounding_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)

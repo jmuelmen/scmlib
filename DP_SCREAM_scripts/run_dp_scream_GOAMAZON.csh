@@ -32,6 +32,9 @@
 
   # NOTE: This is a long case! Consider selecting a subset timeperiod to run on
   # Possible range from Jan. 2014 to Nov. 2015
+  set startdate = 2014-01-01
+  set stop_option = nmonths
+  set stop_n = 23
 
   # Set to debug queue?
   # - Some cases are small enough to run on debug queues
@@ -91,6 +94,7 @@
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
 #######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
+#######  - The user wants to run a subset of the selected case.
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
@@ -111,10 +115,7 @@
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 2014-01-01 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
-  set stop_option = nmonths
-  set stop_n = 23
   set iop_file = GOAMAZON_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 

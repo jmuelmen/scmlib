@@ -113,6 +113,36 @@ sed -i s/CASEwalltime/04:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
+# ARM95
+################################
+
+set casename = ARM95
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Deep convection over ARM SGP site"/ $outfile
+sed -i s/CASElat/36.605/ $outfile
+sed -i s/CASElon/262.515/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/1995-07-18/ $outfile
+sed -i s/CASEstartinsec/19800/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/17/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+
+################################
 # ARM97 
 ################################
 
@@ -141,6 +171,72 @@ sed -i s/CASEuvnudge/.true./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
 sed -i s/CASEwalltime/05:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
+
+################################
+# GOAMAZON (LONG)
+################################
+
+set casename = GOAMAZON
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"ARM's Green Ocean Amazon"/ $outfile
+sed -i s/CASElat/-3.15/ $outfile
+sed -i s/CASElon/300.01/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASELONGstartdate/2014-01-01/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASELONGstopoption/nmonths/ $outfile
+sed -i s/CASELONGstopn/23/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/LENGTHNOTE2/"Possible range from Jan. 2014 to Nov. 2015"/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+sed -i s/LENGTHNOTE/NOTE:/ $outfile
+
+################################
+# DYNAMO_northsounding (LONG)
+################################
+
+set casename = DYNAMO_northsounding
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Dynamics of the Madden Julian Oscillation North Sounding"/ $outfile
+sed -i s/CASElat/3.0/ $outfile
+sed -i s/CASElon/76.5/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASELONGstartdate/2011-10-02/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASELONGstopoption/ndays/ $outfile
+sed -i s/CASELONGstopn/90/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+sed -i s/LENGTHNOTE2/"Possible range from Oct. 2nd 2011 through December 2011"/ $outfile
+sed -i s/LENGTHNOTE/NOTE:/ $outfile
 
 ################################
 # ARM Shallow convection
