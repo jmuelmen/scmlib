@@ -64,25 +64,40 @@
   set num_ne_x = CASEnex
   set num_ne_y = CASEney
 
-  # Set domain length (in m) in x&y direction
+  # Set domain length [m] in x&y direction
   set domain_size_x = CASElex
   set domain_size_y = CASEley
 
-  # SET MODEL TIME STEP (in s).  NOTE that if you change the model resolution,
-  #  it is likely the timestep will need to be adjusted.  Adjusting this
-  #  time step may not be comprehensive, as dynamics related settings may
-  #  also need to be modified (see namelist)
+  # BELOW SETS RESOLUTION DEPENDENT SETTINGS
+  # (Note that all default values below are appropriate for dx=dy=3.33 km and do not
+  #  need to be modified if you are not changing the resolution)
 
+  # SET MODEL TIME STEPS
+  #  -NOTE that if you change the model resolution,
+  #  it is likely the model and physics time steps will need to be adjusted.
+  #  As a rule, a factor of 2 increase in resolution should equate to a factor of 2
+  #  decrease of the model time steps.
+
+  # model and physics time step [s]
   set model_dtime = 100
+
+  # dynamics time step [s]
+  #  should divide evenly into model_dtime
+  set dyn_dtime = 8.333333333333333d0
+
+  # SET SECOND ORDER VISCOSITY NEAR MODEL TOP
+  #  NOTE that if you decrease resolution you will also need to reduce
+  #  the value of "nu_top" (second-rder viscosity applied only near model top).
+  #  Rule of thumb is that a factor of 2 increase in resolution should equate to a
+  #  factor of 2 decrease for this value
+
+  # second order visocosity near model top [m2/s]
+  set nu_top_dyn = 1e4
 
 ####### END (mandatory) USER DEFINED SETTINGS, but...
 ####### Likely POSSIBLE EXCEPTIONS (not limited to):
 #######  - If the user wants to add additional output, for example, the EAM
 #######	   namelist (user_nl_eam) should be modified below to accomodate for this.
-#######  - User has changed the resolution which may require adjustment
-#######    of the dynamics time step settings (bogenschutz1@llnl.gov has run
-#######    several cases at a range of resolutions and may be able to
-#######    advise you on the appropriate settings).
 #######
 #######  - NOTE ON DEFAULT OUTPUT
 #######    - *eam.h0* tapes contain the the default output averaged daily
@@ -226,14 +241,14 @@ EOF
 # NOTE, if you change resolution from default it may be required to
 #  change some of these settings.
 cat <<EOF >> user_nl_eam
- se_tstep=8.333333333333333d0
+ se_tstep=$dyn_dtime
  cldfrc_iceopt = 7
  transport_alg = 0
  dt_tracer_factor = 1
  hypervis_subcycle_q = 1
  dt_remap_factor = 1
  nu             =   0.216784
- nu_top         =  1e4
+ nu_top         =  $nu_top_dyn
  se_ftype       = 2
  cubed_sphere_map = 2
  cld_macmic_num_steps =  1
