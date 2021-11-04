@@ -3,17 +3,16 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  DYNAMO_revelle
-#######  Dynamics of the Madden Julian Oscillation Revelle
+#######  TOGAII
+#######  TOGA-COARE deep convection
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
-#######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
 
 #######################################################
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_DYNAMO_revelle
+  setenv casename scream_dp_TOGAII
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -102,19 +101,19 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 3.0 # latitude
-  set lon = 76.5 # longitude
+  set lat = -2.10 # latitude
+  set lon = 154.69 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
   set do_iop_nudge_uv = .true. # Relax U&V to observations?
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 2011-10-02 # Start date in IOP file
-  set start_in_sec = 0 # start time in seconds in IOP file
+  set startdate = 1992-12-18 # Start date in IOP file
+  set start_in_sec = 64800 # start time in seconds in IOP file
   set stop_option = ndays
-  set stop_n = 90
-  set iop_file = DYNAMO_revelle_iopfile_4scam.nc #IOP file name
+  set stop_n = 20
+  set iop_file = TOGAII_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)

@@ -30,11 +30,6 @@
   # Name of project to run on, if submitting to queue
   setenv projectname cbronze
 
-  # NOTE: This is a long case! Consider selecting a subset timeperiod to run on
-  # Possible range from Oct. 2nd 2011 through December 2011
-  set startdate = 2011-10-02
-  set stop_option = ndays
-  set stop_n = 90
 
   # Set to debug queue?
   # - Some cases are small enough to run on debug queues
@@ -115,7 +110,10 @@
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
+  set startdate = 2011-10-02 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
+  set stop_option = ndays
+  set stop_n = 90
   set iop_file = DYNAMO_northsounding_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 

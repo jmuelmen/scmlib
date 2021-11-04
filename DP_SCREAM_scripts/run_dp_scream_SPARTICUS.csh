@@ -3,8 +3,8 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  DYNAMO_revelle
-#######  Dynamics of the Madden Julian Oscillation Revelle
+#######  SPARTICUS
+#######  Small particles in cirrus clouds
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
 #######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
@@ -13,7 +13,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_DYNAMO_revelle
+  setenv casename scream_dp_SPARTICUS
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -38,7 +38,7 @@
   setenv debug_queue false
 
   # Set number of processors to use
-  set num_procs = 256
+  set num_procs = 128
 
   # set walltime
   set walltime = '05:00:00'
@@ -52,12 +52,12 @@
   # (there are 3x3 unique columns per element, hence the "3" factor)
 
   # Set number of elements in the x&y directions
-  set num_ne_x = 20
-  set num_ne_y = 20
+  set num_ne_x = 10
+  set num_ne_y = 10
 
   # Set domain length [m] in x&y direction
-  set domain_size_x = 200000
-  set domain_size_y = 200000
+  set domain_size_x = 100000
+  set domain_size_y = 100000
 
   # BELOW SETS RESOLUTION DEPENDENT SETTINGS
   # (Note that all default values below are appropriate for dx=dy=3.33 km and do not
@@ -102,19 +102,19 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 3.0 # latitude
-  set lon = 76.5 # longitude
+  set lat = 36.6 # latitude
+  set lon = 262.5 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
   set do_iop_nudge_uv = .true. # Relax U&V to observations?
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 2011-10-02 # Start date in IOP file
-  set start_in_sec = 0 # start time in seconds in IOP file
+  set startdate = 2010-04-01 # Start date in IOP file
+  set start_in_sec = 3599 # start time in seconds in IOP file
   set stop_option = ndays
-  set stop_n = 90
-  set iop_file = DYNAMO_revelle_iopfile_4scam.nc #IOP file name
+  set stop_n = 29
+  set iop_file = SPARTICUS_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)

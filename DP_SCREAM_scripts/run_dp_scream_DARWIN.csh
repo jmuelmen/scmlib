@@ -3,8 +3,8 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  DYNAMO_revelle
-#######  Dynamics of the Madden Julian Oscillation Revelle
+#######  DARWIN
+#######  Forcing from Darwin site
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
 #######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
@@ -13,7 +13,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_DYNAMO_revelle
+  setenv casename scream_dp_DARWIN
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -30,6 +30,12 @@
   # Name of project to run on, if submitting to queue
   setenv projectname cbronze
 
+  # This script is set up to run with the DARWIN_0405_p1_iopfile_4scam.nc (April, 2005) forcingfile
+  # Other time periods exist (see E3SM SCM page) 
+  set startdate = 2004-11-03
+  set stop_option = ndays
+  set stop_n = 5
+  set iop_file = DARWIN_0405_p1_iopfile_4scam.nc
 
   # Set to debug queue?
   # - Some cases are small enough to run on debug queues
@@ -102,19 +108,15 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 3.0 # latitude
-  set lon = 76.5 # longitude
+  set lat = -12.425 # latitude
+  set lon = 130.891 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
   set do_iop_nudge_uv = .true. # Relax U&V to observations?
   set do_iop_subsidence = .false. # compute LS vertical transport?
   set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 2011-10-02 # Start date in IOP file
-  set start_in_sec = 0 # start time in seconds in IOP file
-  set stop_option = ndays
-  set stop_n = 90
-  set iop_file = DYNAMO_revelle_iopfile_4scam.nc #IOP file name
+  set start_in_sec = 43200 # start time in seconds in IOP file
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)

@@ -7,6 +7,7 @@
 #######  Dynamics of the Madden Julian Oscillation AMIE
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
+#######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
 
 #######################################################
 #######  BEGIN USER DEFINED SETTINGS

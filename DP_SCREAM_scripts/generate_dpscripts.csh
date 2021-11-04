@@ -173,6 +173,262 @@ sed -i s/CASEwalltime/05:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
+# MC3E
+################################
+
+set casename = MC3E
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Mid-latitude Continental Convective Clouds Experiment"/ $outfile
+sed -i s/CASElat/36.605/ $outfile
+sed -i s/CASElon/262.515/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2011-04-22/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/45/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# AEROSOLINDIRECT
+################################
+
+set casename = AEROSOLINDIRECT
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Study of Aerosol Indirect Effects in China"/ $outfile
+sed -i s/CASElat/32.55/ $outfile
+sed -i s/CASElon/116.78/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2008-11-01/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/29/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/10/ $outfile
+sed -i s/CASEney/10/ $outfile
+sed -i s/CASElex/100000/ $outfile
+sed -i s/CASEley/100000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# ISDAC
+################################
+
+set casename = ISDAC
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Indirect and semi-direct aerosol campaign"/ $outfile
+sed -i s/CASElat/71.3/ $outfile
+sed -i s/CASElon/156.4/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2008-04-01/ $outfile
+sed -i s/CASEstartinsec/10800/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/29/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/10/ $outfile
+sed -i s/CASEney/10/ $outfile
+sed -i s/CASElex/100000/ $outfile
+sed -i s/CASEley/100000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# ISDAC
+################################
+
+set casename = RACORO
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Continental liquid boundary layer clouds at ARM SGP site"/ $outfile
+sed -i s/CASElat/36.6/ $outfile
+sed -i s/CASElon/262.5/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2009-05-01/ $outfile
+sed -i s/CASEstartinsec/84585/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/26/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/10/ $outfile
+sed -i s/CASEney/10/ $outfile
+sed -i s/CASElex/100000/ $outfile
+sed -i s/CASEley/100000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# SPARTICUS
+################################
+
+set casename = SPARTICUS
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Small particles in cirrus clouds"/ $outfile
+sed -i s/CASElat/36.6/ $outfile
+sed -i s/CASElon/262.5/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2010-04-01/ $outfile
+sed -i s/CASEstartinsec/3599/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/29/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/128/ $outfile
+sed -i s/CASEnex/10/ $outfile
+sed -i s/CASEney/10/ $outfile
+sed -i s/CASElex/100000/ $outfile
+sed -i s/CASEley/100000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# SGP Continuous (LONG)
+################################
+
+set casename = SGP_continuous
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Continuous forcing (2004-2015) over ARM SGP site"/ $outfile
+sed -i s/CASElat/36.605/ $outfile
+sed -i s/CASElon/262.515/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASELONGstartdate/2004-01-01/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASELONGstopoption/nyears/ $outfile
+sed -i s/CASELONGstopn/11/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/LENGTHNOTE2/"Possible range from Jan 2004 to Dec. 2015"/ $outfile
+sed -i s/LENGTHNOTE/NOTE:/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# SGP broken cases (LONG)
+################################
+
+set casename = SGP
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASELONGNAME/SGP0003/ $outfile
+sed -i s/THECASEDESCRIPTION/"Forcing from ARM SGP site"/ $outfile
+sed -i s/CASElat/36.61/ $outfile
+sed -i s/CASElon/262.51/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASELONGstartdate/2000-03-01/ $outfile
+sed -i s/CASEstartinsec/63003/ $outfile
+sed -i s/CASELONGstopoption/ndays/ $outfile
+sed -i s/CASELONGstopn/20/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/LENGTHNOTE2/"This script is set up to run with the SGP0003_iopfile_4scam.nc (March, 2000) forcingfile\n  # Other time periods exist (see E3SM SCM page) "/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+sed -i '/SGP_iopfile_4scam.nc/d' $outfile
+
+################################
+# DARWIN broken cases
+################################
+
+set casename = DARWIN
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASELONGNAME/DARWIN_0405_p1/ $outfile
+sed -i s/THECASEDESCRIPTION/"Forcing from Darwin site"/ $outfile
+sed -i s/CASElat/-12.425/ $outfile
+sed -i s/CASElon/130.891/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASELONGstartdate/2004-11-03/ $outfile
+sed -i s/CASEstartinsec/43200/ $outfile
+sed -i s/CASELONGstopoption/ndays/ $outfile
+sed -i s/CASELONGstopn/5/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/LENGTHNOTE2/"This script is set up to run with the DARWIN_0405_p1_iopfile_4scam.nc (April, 2005) forcingfile\n  # Other time periods exist (see E3SM SCM page) "/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+sed -i '/DARWIN_iopfile_4scam.nc/d' $outfile
+
+################################
 # GOAMAZON (LONG)
 ################################
 
@@ -206,7 +462,7 @@ sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
 sed -i s/LENGTHNOTE/NOTE:/ $outfile
 
 ################################
-# DYNAMO_northsounding (LONG)
+# DYNAMO_northsounding
 ################################
 
 set casename = DYNAMO_northsounding
@@ -219,10 +475,10 @@ sed -i s/CASElon/76.5/ $outfile
 sed -i s/CASEsrfprop/.true./ $outfile
 sed -i s/CASEswoff/.false./ $outfile
 sed -i s/CASElwoff/.false./ $outfile
-sed -i s/CASELONGstartdate/2011-10-02/ $outfile
+sed -i s/CASEstartdate/2011-10-02/ $outfile
 sed -i s/CASEstartinsec/0/ $outfile
-sed -i s/CASELONGstopoption/ndays/ $outfile
-sed -i s/CASELONGstopn/90/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/90/ $outfile
 sed -i s/CASEdebug/false/ $outfile
 sed -i s/CASEnumprocs/256/ $outfile
 sed -i s/CASEnex/20/ $outfile
@@ -235,8 +491,68 @@ sed -i s/CASEdosub/.false./ $outfile
 sed -i s/CASEwalltime/05:00:00/ $outfile
 sed -i s/CASEnhtfrq/-24/ $outfile
 sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
-sed -i s/LENGTHNOTE2/"Possible range from Oct. 2nd 2011 through December 2011"/ $outfile
-sed -i s/LENGTHNOTE/NOTE:/ $outfile
+
+################################
+# DYNAMO_revelle
+################################
+
+set casename = DYNAMO_revelle
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Dynamics of the Madden Julian Oscillation Revelle"/ $outfile
+sed -i s/CASElat/3.0/ $outfile
+sed -i s/CASElon/76.5/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2011-10-02/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/90/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
+
+################################
+# DYNAMO_amie
+################################
+
+set casename = DYNAMO_amie
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Dynamics of the Madden Julian Oscillation AMIE"/ $outfile
+sed -i s/CASElat/-0.63/ $outfile
+sed -i s/CASElon/73.1/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/2011-10-02/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/90/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
+sed -i s/FORCINGPROVIDER/"Shuaiqi Tang and Shaocheng Xie"/ $outfile
 
 ################################
 # ARM Shallow convection
@@ -288,6 +604,36 @@ sed -i s/CASEstopoption/nhours/ $outfile
 sed -i s/CASEdebug/true/ $outfile
 sed -i s/CASEnumprocs/16/ $outfile
 sed -i s/CASEstopn/6/ $outfile
+sed -i s/CASEnex/5/ $outfile
+sed -i s/CASEney/5/ $outfile
+sed -i s/CASElex/50000/ $outfile
+sed -i s/CASEley/50000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.true./ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
+
+################################
+# ATEX
+################################
+
+set casename = ATEX
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Cumulus under stratocumulus"/ $outfile
+sed -i s/CASElat/15.0/ $outfile
+sed -i s/CASElon/325.0/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.true./ $outfile
+sed -i s/CASElwoff/.true./ $outfile
+sed -i s/CASEstartdate/1969-02-15/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEdebug/true/ $outfile
+sed -i s/CASEnumprocs/16/ $outfile
+sed -i s/CASEstopn/8/ $outfile
 sed -i s/CASEnex/5/ $outfile
 sed -i s/CASEney/5/ $outfile
 sed -i s/CASElex/50000/ $outfile
@@ -357,6 +703,36 @@ sed -i s/CASEuvnudge/.true./ $outfile
 sed -i s/CASEdosub/.false./ $outfile
 sed -i s/CASEwalltime/00:30:00/ $outfile
 sed -i s/CASEnhtfrq/-1/ $outfile
+
+################################
+# TOGA
+################################
+
+set casename = TOGAII
+set outfile = run_dp_scream_$casename.csh
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"TOGA-COARE deep convection"/ $outfile
+sed -i s/CASElat/-2.10/ $outfile
+sed -i s/CASElon/154.69/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.false./ $outfile
+sed -i s/CASElwoff/.false./ $outfile
+sed -i s/CASEstartdate/1992-12-18/ $outfile
+sed -i s/CASEstartinsec/64800/ $outfile
+sed -i s/CASEstopoption/ndays/ $outfile
+sed -i s/CASEstopn/20/ $outfile
+sed -i s/CASEdebug/false/ $outfile
+sed -i s/CASEnumprocs/256/ $outfile
+sed -i s/CASEnex/20/ $outfile
+sed -i s/CASEney/20/ $outfile
+sed -i s/CASElex/200000/ $outfile
+sed -i s/CASEley/200000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.true./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/05:00:00/ $outfile
+sed -i s/CASEnhtfrq/-24/ $outfile
 
 ################################
 # TWP06

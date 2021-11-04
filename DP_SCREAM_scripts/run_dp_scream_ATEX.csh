@@ -3,17 +3,16 @@
 #######################################################################
 #######################################################################
 #######  Script to run SCREAM in doubly periodic (DP) mode
-#######  DYNAMO_revelle
-#######  Dynamics of the Madden Julian Oscillation Revelle
+#######  ATEX
+#######  Cumulus under stratocumulus
 #######
 #######  Script Author: P. Bogenschutz (bogenschutz1@llnl.gov)
-#######  Forcing provided by: Shuaiqi Tang and Shaocheng Xie
 
 #######################################################
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename scream_dp_DYNAMO_revelle
+  setenv casename scream_dp_ATEX
 
   # Set the case directory here
   setenv casedirectory /p/lustre2/bogensch/ACME_simulations
@@ -35,13 +34,13 @@
   # - Some cases are small enough to run on debug queues
   # - Setting to true only supported for NERSC and Livermore Computing,
   #   else user will need to modify script to submit to debug queue
-  setenv debug_queue false
+  setenv debug_queue true
 
   # Set number of processors to use
-  set num_procs = 256
+  set num_procs = 16
 
   # set walltime
-  set walltime = '05:00:00'
+  set walltime = '00:30:00'
 
   ## SET DOMAIN SIZE AND RESOLUTION:
   # - Note that these scripts are set to run with dx=dy=3.33 km
@@ -52,12 +51,12 @@
   # (there are 3x3 unique columns per element, hence the "3" factor)
 
   # Set number of elements in the x&y directions
-  set num_ne_x = 20
-  set num_ne_y = 20
+  set num_ne_x = 5
+  set num_ne_y = 5
 
   # Set domain length [m] in x&y direction
-  set domain_size_x = 200000
-  set domain_size_y = 200000
+  set domain_size_x = 50000
+  set domain_size_y = 50000
 
   # BELOW SETS RESOLUTION DEPENDENT SETTINGS
   # (Note that all default values below are appropriate for dx=dy=3.33 km and do not
@@ -102,19 +101,19 @@
 ###########################################################################
 
 # Case specific information kept here
-  set lat = 3.0 # latitude
-  set lon = 76.5 # longitude
+  set lat = 15.0 # latitude
+  set lon = 325.0 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_iop_nudge_tq = .false. # Relax T&Q to observations?
-  set do_iop_nudge_uv = .true. # Relax U&V to observations?
-  set do_iop_subsidence = .false. # compute LS vertical transport?
-  set do_turnoff_swrad = .false. # Turn off SW calculation
-  set do_turnoff_lwrad = .false. # Turn off LW calculation
-  set startdate = 2011-10-02 # Start date in IOP file
+  set do_iop_nudge_uv = .false. # Relax U&V to observations?
+  set do_iop_subsidence = .true. # compute LS vertical transport?
+  set do_turnoff_swrad = .true. # Turn off SW calculation
+  set do_turnoff_lwrad = .true. # Turn off LW calculation
+  set startdate = 1969-02-15 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
-  set stop_option = ndays
-  set stop_n = 90
-  set iop_file = DYNAMO_revelle_iopfile_4scam.nc #IOP file name
+  set stop_option = nhours
+  set stop_n = 8
+  set iop_file = ATEX_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
   # Aerosol specification (for SCREAM always prescribed)
@@ -214,7 +213,7 @@ cat <<EOF >> user_nl_eam
  history_aerosol = .false.
  fincl2='CLDLOW','CLDMED','CLDHGH','CLDTOT','CDNUMC','DTENDTH','DTENDTQ','FLDS','FLNS','FLNSC','FLNT','FLNTC','FLUT','FLUTC','FSDS','FSDSC','FSNS','FSNSC','FSNT','FSNTC','FSNTOA','FSNTOAC','FSUTOA','FSUTOAC','LHFLX','SHFLX','LWCF','SWCF','OMEGA500','PRECL','PS','QREFHT','SOLIN','TAUX','TAUY','TGCLDCWP','TGCLDIWP','TGCLDLWP','TH7001000','TMQ','TREFHT','TS','WINDSPD_10M','crm_grid_x','crm_grid_y'
  mfilt = 5000, 5000
- nhtfrq = -24, -1
+ nhtfrq = -1, -1
  avgflag_pertape='A','I'
  scmlat = $lat
  scmlon = $lon
