@@ -22,6 +22,36 @@ setenv setupfor LC
 # edison /project/projectdirs/e3sm/inputdata
 
 ################################
+# GABLS
+################################
+
+set casename = GABLS
+set outfile = run_dp_scream_$casename.csh 
+cp -r run_dp_scream_TEMPLATE.csh $outfile
+sed -i s/THECASENAME/$casename/ $outfile
+sed -i s/THECASEDESCRIPTION/"Stable boundary layer"/ $outfile
+sed -i s/CASElat/73.0/ $outfile
+sed -i s/CASElon/180.0/ $outfile
+sed -i s/CASEsrfprop/.true./ $outfile
+sed -i s/CASEswoff/.true./ $outfile
+sed -i s/CASElwoff/.true./ $outfile
+sed -i s/CASEstartdate/1999-07-01/ $outfile
+sed -i s/CASEstartinsec/0/ $outfile
+sed -i s/CASEstopoption/nhours/ $outfile
+sed -i s/CASEstopn/9/ $outfile
+sed -i s/CASEdebug/true/ $outfile
+sed -i s/CASEnumprocs/24/ $outfile
+sed -i s/CASEnex/5/ $outfile
+sed -i s/CASEney/5/ $outfile
+sed -i s/CASElex/50000/ $outfile
+sed -i s/CASEley/50000/ $outfile
+sed -i s/CASEtqnudge/.false./ $outfile
+sed -i s/CASEuvnudge/.false./ $outfile
+sed -i s/CASEdosub/.false./ $outfile
+sed -i s/CASEwalltime/00:30:00/ $outfile
+sed -i s/CASEnhtfrq/-1/ $outfile
+
+################################
 # DYCOMSRF01
 ################################
 
