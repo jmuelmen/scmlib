@@ -25,10 +25,10 @@
   setenv code_tag E3SM
                                                          
   # Name of machine you are running on (i.e. cori, anvil, etc)                                                    
-  setenv machine cori-knl
+  setenv machine cori-haswell
   
   # Name of project to run on, if submitting to queue
-  setenv projectname m3526  
+  setenv projectname m3525
 
   # Aerosol specification
   # Options include:
