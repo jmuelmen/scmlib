@@ -18,16 +18,16 @@
   setenv casedirectory $CSCRATCH/SCM_runs
 
   # Directory where code lives
-  setenv code_dir $HOME/E3SM_code
+  setenv code_dir /project/projectdirs/m3525/e3smv2_collections 
 
-  # Code tag name
-  setenv code_tag E3SM_codetag
-
-  # Name of machine you are running on (i.e. cori, anvil, etc)
-  setenv machine mach_name
-
+  # Code tag name 
+  setenv code_tag E3SM
+                                                         
+  # Name of machine you are running on (i.e. cori, anvil, etc)                                                    
+  setenv machine cori-haswell
+  
   # Name of project to run on, if submitting to queue
-  setenv projectname proj_name
+  setenv projectname m3525
 
   # Aerosol specification
   # Options include:
