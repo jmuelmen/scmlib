@@ -15,19 +15,19 @@
   setenv casename e3sm_scm_DYCOMSrf02
 
   # Set the case directory here
-  setenv casedirectory $CSCRATCH/SCM_runs
+  setenv casedirectory ~/scratch/SCM_runs
 
   # Directory where code lives
-  setenv code_dir /project/projectdirs/m3525/e3smv2_collections 
+  setenv code_dir ~/E3SM
 
   # Code tag name 
   setenv code_tag E3SM
                                                          
   # Name of machine you are running on (i.e. cori, anvil, etc)                                                    
-  setenv machine cori-haswell
+  setenv machine compy
   
   # Name of project to run on, if submitting to queue
-  setenv projectname m3525
+  setenv projectname ESMD
 
   # Aerosol specification
   # Options include:
