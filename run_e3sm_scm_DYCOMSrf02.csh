@@ -229,6 +229,7 @@ cat <<EOF >> user_nl_${atm_mod}
  precip_off = $do_turnoff_precip
  scmlat = $lat
  scmlon = $lon
+ fincl1 = 'DTCORE'
 EOF
 
 #  Settings shared by v1 and v2
