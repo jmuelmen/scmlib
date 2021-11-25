@@ -74,7 +74,7 @@
   set lat = 31.5 # latitude
   set lon = 239.0 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
-  set do_scm_relaxation = .true. # Relax case to observations?
+  set do_scm_relaxation = .false. # Relax case to observations?
   set do_turnoff_swrad = .true. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
   set do_turnoff_precip = .false. # Turn off precipitation
