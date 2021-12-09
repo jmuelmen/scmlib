@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename e3sm_scm_DYCOMSrf02
+  setenv casename e3sm_scm_DYCOMSrf02_v2.0.0
 
   # Set the case directory here
   setenv casedirectory ~/scratch/SCM_runs
@@ -21,7 +21,7 @@
   setenv code_dir ~/E3SM
 
   # Code tag name 
-  setenv code_tag E3SM
+  setenv code_tag E3SM_v2.0.0
                                                          
   # Name of machine you are running on (i.e. cori, anvil, etc)                                                    
   setenv machine compy
