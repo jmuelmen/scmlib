@@ -83,7 +83,7 @@
   set startdate = 1999-07-11 # Start date in IOP file
   set start_in_sec = 0 # start time in seconds in IOP file
   set stop_option = nhours
-  set stop_n = 12
+  set stop_n = 240
   set iop_file = DYCOMSrf02_iopfile_4scam.nc #IOP file name
 # End Case specific stuff here
 
@@ -128,7 +128,7 @@
   set case_build_dir   = $run_root_dir/build
   set case_run_dir     = $run_root_dir/run
 
-  set walltime = '00:10:00'
+  set walltime = '01:59:00'
 
 # COSP, set to false unless user really wants it
   setenv do_cosp  false
@@ -159,6 +159,7 @@
 
 # Get local input data directory path
   set input_data_dir = `./xmlquery DIN_LOC_ROOT -value`
+  set iop_input_data_dir = ~/inputdata
 
 # need to use single thread
   set npes = 1
@@ -219,7 +220,7 @@ cat <<EOF >> user_nl_${atm_mod}
  cld_macmic_num_steps = $clubb_micro_steps
  cosp_lite = .true.
  use_gw_front = .true.
- iopfile = '$input_data_dir/$iop_path/$iop_file'
+ iopfile = '$iop_input_data_dir/$iop_path/$iop_file'
  mfilt = 10000
  nhtfrq = 1
  scm_iop_srf_prop = $do_iop_srf_prop
