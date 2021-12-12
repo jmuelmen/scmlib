@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename e3sm_scm_DYCOMSrf02_v2.0.0
+  setenv casename e3sm_scm_DYCOMSrf02_omega_fluct
 
   # Set the case directory here
   setenv casedirectory ~/scratch/SCM_runs
@@ -230,7 +230,7 @@ cat <<EOF >> user_nl_${atm_mod}
  precip_off = $do_turnoff_precip
  scmlat = $lat
  scmlon = $lon
- fincl1 = 'DTCORE'
+ fincl1 = 'DTCORE','DQCORE'
 EOF
 
 #  Settings shared by v1 and v2
