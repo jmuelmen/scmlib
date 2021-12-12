@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename e3sm_scm_DYCOMSrf02_omega_fluct_amp0_48_nosw
+  setenv casename e3sm_scm_DYCOMSrf02_omega_fluct_amp0_48
 
   # Set the case directory here
   setenv casedirectory ~/scratch/SCM_runs
@@ -75,7 +75,7 @@
   set lon = 239.0 # longitude
   set do_iop_srf_prop = .true. # Use surface fluxes in IOP file?
   set do_scm_relaxation = .false. # Relax case to observations?
-  set do_turnoff_swrad = .true. # Turn off SW calculation
+  set do_turnoff_swrad = .false. # Turn off SW calculation
   set do_turnoff_lwrad = .false. # Turn off LW calculation
   set do_turnoff_precip = .false. # Turn off precipitation
   set micro_nccons_val = 55.0D6 # cons_droplet value for liquid
