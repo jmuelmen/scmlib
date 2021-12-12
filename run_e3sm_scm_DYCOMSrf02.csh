@@ -12,7 +12,7 @@
 #######  BEGIN USER DEFINED SETTINGS
 
   # Set the name of your case here
-  setenv casename e3sm_scm_DYCOMSrf02_omega_fluct
+  setenv casename e3sm_scm_DYCOMSrf02_nosw
 
   # Set the case directory here
   setenv casedirectory ~/scratch/SCM_runs
