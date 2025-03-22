@@ -18,16 +18,16 @@
   setenv casedirectory $PSCRATCH/SCM_runs
 
   # Directory where code lives
-  setenv code_dir $HOME/E3SM_code
+  setenv code_dir $HOME/E3SM
 
   # Code tag name
-  setenv code_tag E3SM_codetag
+  setenv code_tag E3SM-maint-3.0
 
   # Name of machine you are running on (i.e. pm-cpu, anvil, chrysalis, compy, etc)
-  setenv machine mach_name
+  setenv machine pm-cpu
 
   # Name of project to run on, if submitting to queue
-  setenv projectname proj_name
+  setenv projectname e3sm
 
   # Aerosol specification
   # Options include:
