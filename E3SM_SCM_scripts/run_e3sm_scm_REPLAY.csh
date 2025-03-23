@@ -422,6 +422,32 @@ cat <<EOF >> user_nl_${atm_mod}
   p3_micro_nccons = $micro_nccons_val
 EOF
 
+cat <<EOF >> user_nl_${atm_mod}
+  cosp_lite = .true.
+  do_aerocom_ind3      = .true.
+
+  fincl8 = 'cdnc', 'lwp', 'iwp', 'lcc', 'icc', 'clt', 'cod', 'ccn', 'ttop', 'OMEGA500', 'OMEGA700', 'TH7001000', 'U850', 'V850', 'SOLIN', 'FSNT', 'FSNTOA', 'FSUTOA', 'FSUTOAC', 'FLUT', 'FLNT', 'FLUTC', 'FLNTC', 'FSNSC', 'FSDSC' ! , 'CLDLOW_CAL', 'CLDMED_CAL', 'CLDHGH_CAL' ! , 'FSUTOAC_d1', 'FSUTOA_d1'
+  fincl9 = 'T', 'Q', 'CLDLIQ', 'PS', 'OMEGA500', 'OMEGA700', 'TH7001000', 'Z3'
+  fincl10 = 'PRECC', 'PRECL', 'QFLX', 'SHFLX', 'OMEGA500', 'OMEGA700', 'TH7001000', 'PS', 'Z3', 'U', 'V', 'T', 'Q', 'CLDLIQ', 'OMEGA', 'QRL', 'QRS', 'CLOUD', 'NUMLIQ', 'CCN4', 'DMS' ! , 'PRAO', 'PRCO', 'DTCORE', 'DQCORE', 'DTCOND'
+  fincl11 = 'CLDST', 'CLOUDCOVER_CLUBB', 'CLOUDFRAC_CLUBB', 'CMELIQ', 'CONCLD', 'DPDLFICE', 'DPDLFLIQ', 'DPDLFT', 'NITENDICE', 'PBLH', 'QITENDICE', 'QT', 'QVTENDICE', 'RCM_CLUBB', 'RCMINLAYER_CLUBB', 'RCMTEND_CLUBB', 'RELVAR', 'RELVARC', 'RHO_CLUBB', 'RIMTEND_CLUBB', 'RTP2_CLUBB', 'RTPTHLP_CLUBB', 'RVMTEND_CLUBB', 'SL', 'THETAL', 'THLP2_CLUBB', 'TPERTBLT', 'TTEND_CLUBB', 'TTENDICE', 'UM_CLUBB', 'UP2_CLUBB', 'UPWP_CLUBB', 'UTEND_CLUBB', 'VMAGCL', 'VMAGDP', 'VMAGGUST', 'VM_CLUBB', 'VP2_CLUBB', 'VPWP_CLUBB', 'VTEND_CLUBB', 'WP2_CLUBB', 'WP3_CLUBB', 'WPRCP_CLUBB', 'WPRTP_CLUBB', 'WPTHLP_CLUBB', 'WPTHVP_CLUBB', 'ZM_CLUBB', 'ZMDLF', 'ZT_CLUBB'
+  
+  avgflag_pertape(8) = 'I'
+  avgflag_pertape(9) = 'I'
+  avgflag_pertape(10) = 'I'
+  avgflag_pertape(11) = 'I'
+  
+  nhtfrq(8) = 1
+  nhtfrq(9) = 1
+  nhtfrq(10) = 1
+  nhtfrq(11) = 1
+  
+  ! files are 90-day chunks
+  mfilt(8) =  10000
+  mfilt(9) =  10000
+  mfilt(10) = 10000
+  mfilt(11) = 10000
+EOF
+
 # if observed aerosols then set flag
 if ($init_aero_type == observed) then
 
