@@ -193,7 +193,7 @@
 
 # This option ONLY to be used for the REPLAY mode
   if ($init_aero_type == none) then
-    if ($e3sm_master != master) then
+    if ($e3sm_version != master) then
       set CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS -chem linoz_mam4_resus_mom_soag -rain_evap_to_coarse_aero -bc_dep_to_snow_updates"
     else
       set CAM_CONFIG_OPTS="$CAM_CONFIG_OPTS -chem chemuci_linozv3_mam5_vbs -rain_evap_to_coarse_aero -vbs"
