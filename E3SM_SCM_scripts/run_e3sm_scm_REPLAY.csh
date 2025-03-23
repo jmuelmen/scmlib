@@ -37,13 +37,14 @@
   #                 concentration)
   setenv init_aero_type none # keep this as none for REPLAY option
 
-  set startdate = # set desired start date
-  set stop_option = # set desired stop option
-  set stop_n = # set desired stop n
-  set start_in_sec = # set start time in seconds
-  set iop_file = # supply the name of your forcing file
-  set lat = # set desired latitude
-  set lon = # set desired longitude
+  set startdate = 2000-07-01 # set desired start date
+  set stop_option = nhours # set desired stop option
+  set stop_n = 2040 # set desired stop n
+  set start_in_sec = 0 # set start time in seconds
+  ## set iop_file = ${PSCRATCH}/main-3.0_test.lon231.0_lat32.0.replaydata_for_SCM.nc # supply the name of your forcing file
+  set iop_file = ${PSCRATCH}/v3_test.lon231.0_lat32.0.replaydata_for_SCM.nc # supply the name of your forcing file
+  set lat = 32.0 # set desired latitude
+  set lon = 231.0 # set desired longitude
 
   # What version of E3SM? (v1, v2, or master)
   #  Select "v1" if you are running with E3SMv1 RELEASE code
@@ -238,7 +239,7 @@ cat <<EOF >> user_nl_${atm_mod}
  cld_macmic_num_steps = $clubb_micro_steps
  cosp_lite = .true.
  use_gw_front = .true.
- iopfile = '$input_data_dir/$iop_path/$iop_file'
+ iopfile = '$iop_file'
  mfilt = 10000
  nhtfrq = 1
  scm_iop_srf_prop = $do_iop_srf_prop
