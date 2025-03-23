@@ -417,6 +417,11 @@ EOF
 
 endif
 
+cat <<EOF >> user_nl_${atm_mod}
+  micro_aerosolactivation = .false.
+  micro_nccons = $micro_nccons_val
+EOF
+
 # if observed aerosols then set flag
 if ($init_aero_type == observed) then
 
