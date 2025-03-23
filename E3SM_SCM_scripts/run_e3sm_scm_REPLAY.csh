@@ -499,6 +499,6 @@ endif
 # Build the case
   ./case.build
 
-  ./case.submit
+  ./case.submit --no-batch
 
   exit
