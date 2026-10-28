@@ -23,16 +23,16 @@
 #######  of the scmlib repo to get you started.
 
   # Set the name of your case here
-  setenv casename scream_dpxx_DYCOMSrf02
+  setenv casename scream_dpxx_DYCOMSrf02_pble
 
   # Set the case directory here
-  setenv casedirectory /pscratch/sd/b/bogensch/dp_screamxx
+  setenv casedirectory /pscratch/sd/j/jmuelmen/dp_screamxx
 
   # Directory where code lives
-  setenv code_dir /pscratch/sd/b/bogensch/dp_scream/codes
+  setenv code_dir $HOME/E3SM
 
   # Code tag name
-  setenv code_tag E3SM_master
+  setenv code_tag E3SM-pblediagscess2
 
   # Name of machine you are running on (i.e. pm-cpu, anvil, etc)
   setenv machine pm-cpu
@@ -49,7 +49,7 @@
   #  See example files in DPxx_SCREAM_SCRIPTS/yaml_file_example to get you started.
   # NOTE, you will likely need to edit the section of the script where the yaml files
   #  are appended to your case.  Do a search for "yamlpath" to find this location.
-  setenv yamlpath /pscratch/sd/b/bogensch/dp_scream/codes/scmlib/DPxx_SCREAM_SCRIPTS/yaml_file_example
+  setenv yamlpath $HOME/scmlib-dpxx/DPxx_SCREAM_SCRIPTS/yaml_file_example
 
 
   # Set to debug queue?
@@ -251,9 +251,9 @@
   ./atmchange physics::mac_aero_mic::shoc::compute_tendencies=T_mid,qv
   ./atmchange physics::mac_aero_mic::p3::compute_tendencies=T_mid,qv
   ./atmchange physics::rrtmgp::compute_tendencies=T_mid
-  ./atmchange homme::compute_tendencies=T_mid,qv
+  ./atmchange homme::compute_tendencies=T_mid,qv,qc,qi
   ./atmchange physics::iop_forcing::compute_tendencies=T_mid,qv
-  
+
  # configure yaml output
  # See the example yaml files in the DPxx_SCREAM_SCRIPTS/yaml_file_example
  # Note that you can have as many output streams (yaml files) as you want!

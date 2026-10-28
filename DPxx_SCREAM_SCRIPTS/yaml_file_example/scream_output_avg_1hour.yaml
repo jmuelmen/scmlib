@@ -1,6 +1,6 @@
 %YAML 1.1
 ---
-averaging_type: average
+averaging_type: instant
 max_snapshots_per_file: 100000
 filename_prefix: ${CASE}.fullfield
 fields:
@@ -103,6 +103,9 @@ fields:
     - omega_at_500hPa
     - RelativeHumidity_at_700hPa
     - SeaLevelPressure
+    - PBLEntrainmentBudget
+    - PBLEntrainmentBudget_tl
+    - PBLEntrainmentBudget_qt
     # ADD SHOC DIAGS (must set ./atmchange extra_shoc_diags=true)
 #    - shoc_mix_horiz_avg
 #    - wthl_sec_horiz_avg
@@ -115,4 +118,4 @@ fields:
 #    - w_variance_horiz_avg    
 output_control:
   frequency: 1
-  frequency_units: nhours
+  frequency_units: nsteps
